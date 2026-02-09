@@ -1,65 +1,203 @@
+import Link from "next/link";
 import Image from "next/image";
+import { ArrowRight, Instagram, Facebook } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Hero } from "@/components/hero";
+import { getGalleryItems } from "@/lib/gallery";
+import { SOCIAL } from "@/lib/constants";
 
-export default function Home() {
+const categories = [
+  {
+    name: "Formal",
+    description:
+      "Premium formal wear for professionals. Shirts, trousers, suits, and more.",
+    icon: "👔",
+  },
+  {
+    name: "Casual",
+    description:
+      "Comfortable everyday clothing. T-shirts, jeans, polos, and casual essentials.",
+    icon: "👕",
+  },
+  {
+    name: "Inners",
+    description:
+      "Quality innerwear and essentials. Cotton-rich, comfortable, and durable.",
+    icon: "🏷️",
+  },
+];
+
+export default function HomePage() {
+  const galleryItems = getGalleryItems();
+  const latestItems = galleryItems.slice(0, 6);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <>
+      {/* Hero Section */}
+      <Hero />
+
+      {/* About Preview */}
+      <section className="bg-white py-20 sm:py-28">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <div className="mb-6 h-px w-16 mx-auto bg-accent-red" />
+            <h2 className="font-[family-name:var(--font-playfair)] text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              Wholesale Clothing Excellence
+            </h2>
+            <p className="mt-6 text-lg leading-relaxed text-gray-600">
+              BK Clothing Company is a premier wholesale clothing distributor
+              based in Colombo, Sri Lanka. With a commitment to quality and
+              competitive pricing, we supply a comprehensive range of formal,
+              casual, and innerwear products to retailers across the nation.
+            </p>
+            <Button
+              asChild
+              variant="outline"
+              className="mt-8 border-black text-black hover:bg-black hover:text-white"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+              <Link href="/about">
+                Learn More
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Categories */}
+      <section className="bg-gray-50 py-20 sm:py-28" aria-label="Product categories">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-14 text-center">
+            <h2 className="font-[family-name:var(--font-playfair)] text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              Our Categories
+            </h2>
+            <p className="mt-4 text-gray-600">
+              Comprehensive range of wholesale clothing solutions
+            </p>
+          </div>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {categories.map((cat) => (
+              <Card
+                key={cat.name}
+                className="group border-0 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+              >
+                <CardContent className="p-8 text-center">
+                  <span className="text-4xl">{cat.icon}</span>
+                  <h3 className="mt-4 text-xl font-semibold tracking-wide">
+                    {cat.name}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-gray-500">
+                    {cat.description}
+                  </p>
+                  <Link
+                    href={`/products?category=${cat.name.toLowerCase()}`}
+                    className="mt-5 inline-flex items-center text-sm font-medium text-accent-red transition-colors hover:underline"
+                  >
+                    Explore
+                    <ArrowRight className="ml-1 h-3 w-3" />
+                  </Link>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Product Preview */}
+      {latestItems.length > 0 && (
+        <section className="bg-white py-20 sm:py-28" aria-label="Latest products">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mb-14 text-center">
+              <h2 className="font-[family-name:var(--font-playfair)] text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                Our Products
+              </h2>
+              <p className="mt-4 text-gray-600">
+                A glimpse into our latest collection
+              </p>
+            </div>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {latestItems.map((item) => (
+                <div
+                  key={item.id}
+                  className="group relative aspect-[4/5] overflow-hidden rounded-lg bg-gray-100"
+                >
+                  <Image
+                    src={item.imageUrl}
+                    alt={item.title || `${item.category} clothing`}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/70 via-black/0 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    <div className="w-full p-5">
+                      {item.title && (
+                        <h3 className="text-sm font-medium text-white">
+                          {item.title}
+                        </h3>
+                      )}
+                      <span className="mt-1 inline-block text-xs uppercase tracking-wider text-white/70">
+                        {item.category}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="mt-12 text-center">
+              <Button
+                asChild
+                size="lg"
+                className="bg-black text-white hover:bg-gray-800"
+              >
+                <Link href="/products">
+                  View All Products
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Social Section */}
+      <section className="bg-gray-50 py-20" aria-label="Social media">
+        <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+          <h2 className="font-[family-name:var(--font-playfair)] text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            Connect With Us
+          </h2>
+          <p className="mt-4 text-gray-600">
+            Follow us on social media for the latest updates
           </p>
+          <div className="mt-10 flex items-center justify-center gap-6">
+            <a
+              href={SOCIAL.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Follow us on Instagram"
+              className="group flex items-center gap-3 rounded-full border border-gray-200 bg-white px-8 py-4 transition-all hover:border-accent-red hover:shadow-md"
+            >
+              <Instagram className="h-5 w-5 text-gray-600 transition-colors group-hover:text-accent-red" />
+              <span className="text-sm font-medium text-gray-700 group-hover:text-accent-red">
+                Instagram
+              </span>
+            </a>
+            <a
+              href={SOCIAL.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Follow us on Facebook"
+              className="group flex items-center gap-3 rounded-full border border-gray-200 bg-white px-8 py-4 transition-all hover:border-accent-red hover:shadow-md"
+            >
+              <Facebook className="h-5 w-5 text-gray-600 transition-colors group-hover:text-accent-red" />
+              <span className="text-sm font-medium text-gray-700 group-hover:text-accent-red">
+                Facebook
+              </span>
+            </a>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      </section>
+    </>
   );
 }

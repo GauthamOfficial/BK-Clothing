@@ -1,0 +1,50 @@
+[
+  {
+    "id": "1",
+    "imageUrl": "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&q=80",
+    "category": "formal",
+    "title": "Classic White Shirt"
+  },
+  {
+    "id": "2",
+    "imageUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80",
+    "category": "formal",
+    "title": "Business Suit"
+  },
+  {
+    "id": "3",
+    "imageUrl": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=600&q=80",
+    "category": "formal",
+    "title": "Formal Trousers"
+  },
+  {
+    "id": "4",
+    "imageUrl": "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=600&q=80",
+    "category": "casual",
+    "title": "Casual T-Shirt Collection"
+  },
+  {
+    "id": "5",
+    "imageUrl": "https://images.unsplash.com/photo-1434389677669-e08b4cda3a34?w=600&q=80",
+    "category": "casual",
+    "title": "Denim Jeans"
+  },
+  {
+    "id": "6",
+    "imageUrl": "https://images.unsplash.com/photo-1562157873-818bc0726f68?w=600&q=80",
+    "category": "casual",
+    "title": "Casual Polo Shirts"
+  },
+  {
+    "id": "7",
+    "imageUrl": "https://images.unsplash.com/photo-1586363104862-3a5e2ab60d99?w=600&q=80",
+    "category": "inners",
+    "title": "Premium Cotton Innerwear"
+  },
+  {
+    "id": "8",
+    "imageUrl": "https://images.unsplash.com/photo-1564584217132-2271feaeb3c5?w=600&q=80",
+    "category": "inners",
+    "title": "Comfort Essentials"
+  }
+]
