@@ -1,5 +1,5 @@
 export const SITE_NAME = "BK Clothing Company";
-export const SITE_TAGLINE = "Formal | Casual | Inners";
+export const SITE_TAGLINE = "Manufacturers & Wholesale Dealers in Men's Clothing";
 export const SITE_DESCRIPTION =
   "BK Clothing Company - Premium wholesale clothing manufacturer and distributor in Sri Lanka. Specializing in formal wear, casual wear, and innerwear for wholesale buyers.";
 export const SITE_URL = "https://bkclothing.lk";

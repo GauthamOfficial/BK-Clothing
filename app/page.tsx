@@ -12,19 +12,16 @@ const categories = [
     name: "Formal",
     description:
       "Premium formal wear for professionals. Shirts, trousers, suits, and more.",
-    icon: "👔",
   },
   {
     name: "Casual",
     description:
       "Comfortable everyday clothing. T-shirts, jeans, polos, and casual essentials.",
-    icon: "👕",
   },
   {
     name: "Inners",
     description:
       "Quality innerwear and essentials. Cotton-rich, comfortable, and durable.",
-    icon: "🏷️",
   },
 ];
 
@@ -43,7 +40,7 @@ export default function HomePage() {
           <div className="mx-auto max-w-3xl text-center">
             <div className="mb-6 h-px w-16 mx-auto bg-accent-red" />
             <h2 className="font-[family-name:var(--font-playfair)] text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              Wholesale Clothing Excellence
+              Manufacturers &amp; Wholesale Dealers in Men&apos;s Clothing
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-gray-600">
               BK Clothing Company is a premier wholesale clothing distributor
@@ -83,8 +80,7 @@ export default function HomePage() {
                 className="group border-0 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
               >
                 <CardContent className="p-8 text-center">
-                  <span className="text-4xl">{cat.icon}</span>
-                  <h3 className="mt-4 text-xl font-semibold tracking-wide">
+                  <h3 className="text-xl font-semibold tracking-wide">
                     {cat.name}
                   </h3>
                   <p className="mt-3 text-sm leading-relaxed text-gray-500">

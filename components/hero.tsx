@@ -41,12 +41,8 @@ export function Hero() {
             <span className="text-accent-red">CLOTHING</span>
           </h1>
 
-          <p className="animate-fade-in-up animation-delay-100 mt-6 text-lg font-light tracking-[0.3em] uppercase text-white/70 sm:text-xl">
-            Formal &nbsp;|&nbsp; Casual &nbsp;|&nbsp; Inners
-          </p>
-
-          <p className="animate-fade-in-up animation-delay-200 mt-4 text-sm tracking-wider text-white/50">
-            Wholesale Clothing Excellence
+          <p className="animate-fade-in-up animation-delay-100 mt-6 text-sm font-light tracking-[0.25em] uppercase text-white/70 sm:text-base">
+            Manufacturers &amp; Wholesale Dealers in Men&apos;s Clothing
           </p>
 
           {/* Buttons */}
