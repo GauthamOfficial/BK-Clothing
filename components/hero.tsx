@@ -36,7 +36,7 @@ export function Hero() {
           {/* Accent Line */}
           <div className="mx-auto mb-8 h-px w-16 bg-accent-red" />
 
-          <h1 className="animate-fade-in-up font-[family-name:var(--font-playfair)] text-5xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl">
+          <h1 className="animate-fade-in-up font-[family-name:var(--font-black-ops-one)] text-5xl font-normal tracking-tight text-white sm:text-6xl lg:text-7xl">
             BK{" "}
             <span className="text-accent-red">CLOTHING</span>
           </h1>

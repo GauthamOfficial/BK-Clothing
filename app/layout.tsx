@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Inter, Playfair_Display, Black_Ops_One } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
@@ -20,6 +20,13 @@ const inter = Inter({
 const playfair = Playfair_Display({
   variable: "--font-playfair",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const blackOpsOne = Black_Ops_One({
+  variable: "--font-black-ops-one",
+  subsets: ["latin"],
+  weight: "400",
   display: "swap",
 });
 
@@ -94,7 +101,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} ${playfair.variable} font-sans antialiased`}
+        className={`${inter.variable} ${playfair.variable} ${blackOpsOne.variable} font-sans antialiased`}
       >
         <Navbar />
         <main className="min-h-screen">{children}</main>
