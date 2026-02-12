@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import nodemailer from "nodemailer";
 
 export async function POST(request: Request) {
   try {
@@ -18,41 +19,70 @@ export async function POST(request: Request) {
       );
     }
 
-    // In production, you would send an email here using Resend, SendGrid, etc.
-    // For now, log the submission
-    console.log("Contact form submission:", {
-      name,
-      phone,
-      email,
-      message,
-      timestamp: new Date().toISOString(),
-    });
+    const gmailUser = process.env.GMAIL_USER;
+    const gmailAppPassword = process.env.GMAIL_APP_PASSWORD;
+    const toEmail = process.env.CONTACT_TO_EMAIL;
 
-    // Example: If RESEND_API_KEY is set, send email
-    // const resendKey = process.env.RESEND_API_KEY;
-    // if (resendKey) {
-    //   await fetch("https://api.resend.com/emails", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       Authorization: `Bearer ${resendKey}`,
-    //     },
-    //     body: JSON.stringify({
-    //       from: "noreply@bkclothing.lk",
-    //       to: process.env.CONTACT_TO_EMAIL,
-    //       subject: `Contact Form: ${name}`,
-    //       html: `<p><strong>Name:</strong> ${name}</p>
-    //              <p><strong>Phone:</strong> ${phone}</p>
-    //              <p><strong>Email:</strong> ${email}</p>
-    //              <p><strong>Message:</strong> ${message}</p>`,
-    //     }),
-    //   });
-    // }
+    if (gmailUser && gmailAppPassword && toEmail) {
+      const transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+          user: gmailUser,
+          pass: gmailAppPassword,
+        },
+      });
+
+      await transporter.sendMail({
+        from: `"BK Clothing Website" <${gmailUser}>`,
+        to: toEmail,
+        replyTo: email,
+        subject: `New Contact Form: ${name}`,
+        html: `
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+            <h2 style="color: #000; border-bottom: 2px solid #ff003a; padding-bottom: 10px;">
+              New Contact Form Submission
+            </h2>
+            <table style="width: 100%; border-collapse: collapse;">
+              <tr>
+                <td style="padding: 8px 0; font-weight: bold; color: #333;">Name:</td>
+                <td style="padding: 8px 0; color: #555;">${name}</td>
+              </tr>
+              <tr>
+                <td style="padding: 8px 0; font-weight: bold; color: #333;">Phone:</td>
+                <td style="padding: 8px 0; color: #555;">${phone}</td>
+              </tr>
+              <tr>
+                <td style="padding: 8px 0; font-weight: bold; color: #333;">Email:</td>
+                <td style="padding: 8px 0; color: #555;">
+                  <a href="mailto:${email}" style="color: #ff003a;">${email}</a>
+                </td>
+              </tr>
+            </table>
+            <div style="margin-top: 16px; padding: 16px; background: #f9f9f9; border-radius: 8px;">
+              <p style="font-weight: bold; color: #333; margin: 0 0 8px 0;">Message:</p>
+              <p style="color: #555; margin: 0; white-space: pre-wrap;">${message}</p>
+            </div>
+            <p style="margin-top: 20px; font-size: 12px; color: #999;">
+              Sent from BK Clothing website contact form
+            </p>
+          </div>
+        `,
+      });
+    } else {
+      console.log("Contact form submission (Gmail not configured):", {
+        name,
+        phone,
+        email,
+        message,
+        timestamp: new Date().toISOString(),
+      });
+    }
 
     return NextResponse.json({ success: true });
-  } catch {
+  } catch (err) {
+    console.error("Email send error:", err);
     return NextResponse.json(
-      { error: "Internal server error" },
+      { error: "Failed to send message" },
       { status: 500 }
     );
   }

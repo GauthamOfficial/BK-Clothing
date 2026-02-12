@@ -121,9 +121,9 @@ export function Navbar() {
                 aria-label="Open menu"
               >
                 <span className="flex h-5 w-5 flex-col items-center justify-center gap-[5px]">
-                  <span className={cn("block h-[1.5px] w-4 rounded-full bg-current transition-all duration-200", open && "translate-y-[6.5px] rotate-45")} />
-                  <span className={cn("block h-[1.5px] w-4 rounded-full bg-current transition-all duration-200", open && "opacity-0")} />
-                  <span className={cn("block h-[1.5px] w-4 rounded-full bg-current transition-all duration-200", open && "-translate-y-[6.5px] -rotate-45")} />
+                  <span className="block h-[1.5px] w-4 rounded-full bg-current" />
+                  <span className="block h-[1.5px] w-4 rounded-full bg-current" />
+                  <span className="block h-[1.5px] w-4 rounded-full bg-current" />
                 </span>
               </Button>
             </SheetTrigger>
