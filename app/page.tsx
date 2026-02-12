@@ -10,16 +10,19 @@ import { SOCIAL } from "@/lib/constants";
 const categories = [
   {
     name: "Formal",
+    image: "/formal.png",
     description:
       "Premium formal wear for professionals. Shirts, trousers, suits, and more.",
   },
   {
     name: "Casual",
+    image: "/casual.png",
     description:
       "Comfortable everyday clothing. T-shirts, jeans, polos, and casual essentials.",
   },
   {
     name: "Inners",
+    image: "/Inners.png",
     description:
       "Quality innerwear and essentials. Cotton-rich, comfortable, and durable.",
   },
@@ -77,8 +80,17 @@ export default function HomePage() {
             {categories.map((cat) => (
               <Card
                 key={cat.name}
-                className="group border-0 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                className="group overflow-hidden border-0 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
               >
+                <div className="relative w-full overflow-hidden bg-gray-50">
+                  <Image
+                    src={cat.image}
+                    alt={cat.name}
+                    width={600}
+                    height={600}
+                    className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
                 <CardContent className="p-8 text-center">
                   <h3 className="text-xl font-semibold tracking-wide">
                     {cat.name}
