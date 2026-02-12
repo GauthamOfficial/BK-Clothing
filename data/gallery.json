@@ -1,50 +1,74 @@
 [
   {
-    "id": "1",
-    "imageUrl": "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&q=80",
-    "category": "formal",
-    "title": "Classic White Shirt"
-  },
-  {
-    "id": "2",
-    "imageUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80",
-    "category": "formal",
-    "title": "Business Suit"
-  },
-  {
-    "id": "3",
-    "imageUrl": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=600&q=80",
-    "category": "formal",
-    "title": "Formal Trousers"
-  },
-  {
-    "id": "4",
-    "imageUrl": "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=600&q=80",
+    "imageUrl": "https://res.cloudinary.com/dbjjpdfe7/image/upload/v1770904206/SnapInsta.to_601416804_17955536736023518_6021411604545581255_n_erqhze.jpg",
     "category": "casual",
-    "title": "Casual T-Shirt Collection"
+    "title": "MEN’S CARGO PANT",
+    "id": "1770904244834"
   },
   {
-    "id": "5",
-    "imageUrl": "https://images.unsplash.com/photo-1434389677669-e08b4cda3a34?w=600&q=80",
+    "imageUrl": "https://res.cloudinary.com/dbjjpdfe7/image/upload/v1770904209/SnapInsta.to_605551228_17956284375023518_9158056350084578491_n_qsai9b.jpg",
     "category": "casual",
-    "title": "Denim Jeans"
+    "title": "MEN’S TWO TONE SHIRT S/S",
+    "id": "1770904315087"
   },
   {
-    "id": "6",
-    "imageUrl": "https://images.unsplash.com/photo-1562157873-818bc0726f68?w=600&q=80",
+    "imageUrl": "https://res.cloudinary.com/dbjjpdfe7/image/upload/v1770904208/SnapInsta.to_602179169_17955762816023518_7670761295983117637_n_lkogw7.jpg",
     "category": "casual",
-    "title": "Casual Polo Shirts"
+    "title": "MEN’S BACK PRINT T-SHIRT",
+    "id": "1770904348582"
   },
   {
-    "id": "7",
-    "imageUrl": "https://images.unsplash.com/photo-1586363104862-3a5e2ab60d99?w=600&q=80",
-    "category": "inners",
-    "title": "Premium Cotton Innerwear"
+    "imageUrl": "https://res.cloudinary.com/dbjjpdfe7/image/upload/v1770904208/SnapInsta.to_607320236_17956714137023518_4438405498880378671_n_ytop0x.jpg",
+    "category": "casual",
+    "title": "MEN’S TRENDY PRINT T-SHIRT",
+    "id": "1770904406727"
   },
   {
-    "id": "8",
-    "imageUrl": "https://images.unsplash.com/photo-1564584217132-2271feaeb3c5?w=600&q=80",
-    "category": "inners",
-    "title": "Comfort Essentials"
+    "imageUrl": "https://res.cloudinary.com/dbjjpdfe7/image/upload/v1770904204/SnapInsta.to_597869718_17955239694023518_609154601960241945_n_wrbgie.jpg",
+    "category": "casual",
+    "title": "MEN’S CARGO PANT",
+    "id": "1770904466410"
+  },
+  {
+    "imageUrl": "https://res.cloudinary.com/dbjjpdfe7/image/upload/v1770904205/SnapInsta.to_589125486_17954396823023518_5740474192985829847_n_wevgcl.jpg",
+    "category": "casual",
+    "title": "BOYS L/S OVERSIZED T-SHIRT",
+    "id": "1770904564265"
+  },
+  {
+    "imageUrl": "https://res.cloudinary.com/dbjjpdfe7/image/upload/v1770904205/SnapInsta.to_607517470_17956924293023518_4068107157327578939_n_cgm70k.jpg",
+    "category": "casual",
+    "title": "BOYS S/S BACKPRINT T-SHIRT",
+    "id": "1770904683340"
+  },
+  {
+    "imageUrl": "https://res.cloudinary.com/dbjjpdfe7/image/upload/v1770904206/SnapInsta.to_599300893_17955037422023518_8650130383914410940_n_lqmksc.jpg",
+    "category": "casual",
+    "title": "KID’S QUALITY CARGO PANT",
+    "id": "1770904724391"
+  },
+  {
+    "imageUrl": "https://res.cloudinary.com/dbjjpdfe7/image/upload/v1770904205/SnapInsta.to_589184231_17954384313023518_7027424253137051577_n_wy2ml3.jpg",
+    "category": "casual",
+    "title": "MEN’S BACK PRINT T-SHIRT",
+    "id": "1770904756086"
+  },
+  {
+    "imageUrl": "https://res.cloudinary.com/dbjjpdfe7/image/upload/v1770904972/SnapInsta.to_602023814_17955761229023518_4541691229001869429_n_p0wuod.jpg",
+    "category": "casual",
+    "title": "BOYS S/S BACKPRINT T-SHIRT",
+    "id": "1770905015222"
+  },
+  {
+    "imageUrl": "https://res.cloudinary.com/dbjjpdfe7/image/upload/v1770904972/SnapInsta.to_621156171_17959425549023518_4562367407746232623_n_qesggd.jpg",
+    "category": "casual",
+    "title": "MEN’S TRENDY PANT BOTTOM",
+    "id": "1770905044519"
+  },
+  {
+    "imageUrl": "https://res.cloudinary.com/dbjjpdfe7/image/upload/v1770904973/SnapInsta.to_603053986_17955956130023518_6611572085864647135_n_vxmasd.jpg",
+    "category": "casual",
+    "title": "MEN’S OVERSIZED SPRY PRINT T-SHIRT",
+    "id": "1770905079006"
   }
 ]

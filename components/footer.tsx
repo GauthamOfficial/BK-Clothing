@@ -105,7 +105,7 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="mt-12 border-t border-gray-800 pt-8 text-center">
           <p className="text-xs text-gray-500">
-            &copy; {new Date().getFullYear()} {SITE_NAME}. All rights reserved.
+            &copy; 2021 {SITE_NAME}. All rights reserved.
           </p>
         </div>
       </div>

@@ -122,7 +122,7 @@ export function Navbar() {
                 </span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="left" className="w-72 bg-white p-0">
+            <SheetContent side="left" className="w-72 bg-white p-0" showCloseButton={false}>
               <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
               <div className="flex h-full flex-col">
                 {/* Mobile Logo */}
