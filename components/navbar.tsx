@@ -54,6 +54,11 @@ export function Navbar() {
           href="/"
           className="flex-shrink-0"
           aria-label={`${SITE_NAME} - Home`}
+          onClick={() => {
+            if (pathname === "/") {
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+          }}
         >
           <Image
             src="/navbar-logo.png"
