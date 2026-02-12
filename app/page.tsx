@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Hero } from "@/components/hero";
 import { getGalleryItems } from "@/lib/gallery";
 import { SOCIAL } from "@/lib/constants";
+import { AnimateOnScroll, StaggerChildren } from "@/components/animate-on-scroll";
 
 const categories = [
   {
@@ -41,26 +42,34 @@ export default function HomePage() {
       <section className="bg-white py-20 sm:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
-            <div className="mb-6 h-px w-16 mx-auto bg-accent-red" />
-            <h2 className="font-[family-name:var(--font-playfair)] text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              Manufacturers &amp; Wholesale Dealers in Men&apos;s Clothing
-            </h2>
-            <p className="mt-6 text-lg leading-relaxed text-gray-600">
-              BK Clothing Company is a premier wholesale clothing distributor
-              based in Colombo, Sri Lanka. With a commitment to quality and
-              competitive pricing, we supply a comprehensive range of formal,
-              casual, and innerwear products to retailers across the nation.
-            </p>
-            <Button
-              asChild
-              variant="outline"
-              className="mt-8 border-black text-black hover:bg-black hover:text-white"
-            >
-              <Link href="/about">
-                Learn More
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
+            <AnimateOnScroll variant="fade-in">
+              <div className="mb-6 h-px w-16 mx-auto bg-accent-red" />
+            </AnimateOnScroll>
+            <AnimateOnScroll variant="fade-up" delay={100}>
+              <h2 className="font-[family-name:var(--font-playfair)] text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                Manufacturers &amp; Wholesale Dealers in Men&apos;s Clothing
+              </h2>
+            </AnimateOnScroll>
+            <AnimateOnScroll variant="fade-up" delay={200}>
+              <p className="mt-6 text-lg leading-relaxed text-gray-600">
+                BK Clothing Company is a premier wholesale clothing distributor
+                based in Colombo, Sri Lanka. With a commitment to quality and
+                competitive pricing, we supply a comprehensive range of formal,
+                casual, and innerwear products to retailers across the nation.
+              </p>
+            </AnimateOnScroll>
+            <AnimateOnScroll variant="fade-up" delay={300}>
+              <Button
+                asChild
+                variant="outline"
+                className="mt-8 border-black text-black hover:bg-black hover:text-white"
+              >
+                <Link href="/about">
+                  Learn More
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+            </AnimateOnScroll>
           </div>
         </div>
       </section>
@@ -68,19 +77,19 @@ export default function HomePage() {
       {/* Categories */}
       <section className="bg-gray-50 py-20 sm:py-28" aria-label="Product categories">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-14 text-center">
+          <AnimateOnScroll variant="fade-up" className="mb-14 text-center">
             <h2 className="font-[family-name:var(--font-playfair)] text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
               Our Categories
             </h2>
             <p className="mt-4 text-gray-600">
               Comprehensive range of wholesale clothing solutions
             </p>
-          </div>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          </AnimateOnScroll>
+          <StaggerChildren className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" staggerDelay={150}>
             {categories.map((cat) => (
               <Card
                 key={cat.name}
-                className="group overflow-hidden border-0 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                className="aos-stagger-child group overflow-hidden border-0 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
               >
                 <div className="relative w-full overflow-hidden bg-gray-50">
                   <Image
@@ -108,7 +117,7 @@ export default function HomePage() {
                 </CardContent>
               </Card>
             ))}
-          </div>
+          </StaggerChildren>
         </div>
       </section>
 
@@ -116,19 +125,19 @@ export default function HomePage() {
       {latestItems.length > 0 && (
         <section className="bg-white py-20 sm:py-28" aria-label="Latest products">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="mb-14 text-center">
+            <AnimateOnScroll variant="fade-up" className="mb-14 text-center">
               <h2 className="font-[family-name:var(--font-playfair)] text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                 Our Products
               </h2>
               <p className="mt-4 text-gray-600">
                 A glimpse into our latest collection
               </p>
-            </div>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            </AnimateOnScroll>
+            <StaggerChildren className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3" staggerDelay={100}>
               {latestItems.map((item) => (
                 <div
                   key={item.id}
-                  className="group relative aspect-[4/5] overflow-hidden rounded-lg bg-gray-100"
+                  className="aos-stagger-child group relative aspect-[4/5] overflow-hidden rounded-lg bg-gray-100"
                 >
                   <Image
                     src={item.imageUrl}
@@ -152,8 +161,8 @@ export default function HomePage() {
                   </div>
                 </div>
               ))}
-            </div>
-            <div className="mt-12 text-center">
+            </StaggerChildren>
+            <AnimateOnScroll variant="fade-up" delay={200} className="mt-12 text-center">
               <Button
                 asChild
                 size="lg"
@@ -164,7 +173,7 @@ export default function HomePage() {
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
-            </div>
+            </AnimateOnScroll>
           </div>
         </section>
       )}
@@ -172,38 +181,42 @@ export default function HomePage() {
       {/* Social Section */}
       <section className="bg-gray-50 py-20" aria-label="Social media">
         <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
-          <h2 className="font-[family-name:var(--font-playfair)] text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Connect With Us
-          </h2>
-          <p className="mt-4 text-gray-600">
-            Follow us on social media for the latest updates
-          </p>
-          <div className="mt-10 flex items-center justify-center gap-6">
-            <a
-              href={SOCIAL.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Follow us on Instagram"
-              className="group flex items-center gap-3 rounded-full border border-gray-200 bg-white px-8 py-4 transition-all hover:border-accent-red hover:shadow-md"
-            >
-              <Instagram className="h-5 w-5 text-gray-600 transition-colors group-hover:text-accent-red" />
-              <span className="text-sm font-medium text-gray-700 group-hover:text-accent-red">
-                Instagram
-              </span>
-            </a>
-            <a
-              href={SOCIAL.facebook}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Follow us on Facebook"
-              className="group flex items-center gap-3 rounded-full border border-gray-200 bg-white px-8 py-4 transition-all hover:border-accent-red hover:shadow-md"
-            >
-              <Facebook className="h-5 w-5 text-gray-600 transition-colors group-hover:text-accent-red" />
-              <span className="text-sm font-medium text-gray-700 group-hover:text-accent-red">
-                Facebook
-              </span>
-            </a>
-          </div>
+          <AnimateOnScroll variant="fade-up">
+            <h2 className="font-[family-name:var(--font-playfair)] text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              Connect With Us
+            </h2>
+            <p className="mt-4 text-gray-600">
+              Follow us on social media for the latest updates
+            </p>
+          </AnimateOnScroll>
+          <AnimateOnScroll variant="fade-up" delay={200}>
+            <div className="mt-10 flex items-center justify-center gap-6">
+              <a
+                href={SOCIAL.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow us on Instagram"
+                className="group flex items-center gap-3 rounded-full border border-gray-200 bg-white px-8 py-4 transition-all hover:border-accent-red hover:shadow-md"
+              >
+                <Instagram className="h-5 w-5 text-gray-600 transition-colors group-hover:text-accent-red" />
+                <span className="text-sm font-medium text-gray-700 group-hover:text-accent-red">
+                  Instagram
+                </span>
+              </a>
+              <a
+                href={SOCIAL.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow us on Facebook"
+                className="group flex items-center gap-3 rounded-full border border-gray-200 bg-white px-8 py-4 transition-all hover:border-accent-red hover:shadow-md"
+              >
+                <Facebook className="h-5 w-5 text-gray-600 transition-colors group-hover:text-accent-red" />
+                <span className="text-sm font-medium text-gray-700 group-hover:text-accent-red">
+                  Facebook
+                </span>
+              </a>
+            </div>
+          </AnimateOnScroll>
         </div>
       </section>
     </>

@@ -9,7 +9,7 @@ export function Hero() {
       aria-label="Hero section"
     >
       {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
+      <div className="hero-bg absolute inset-0">
         <div
           className="h-full w-full"
           style={{
@@ -21,7 +21,7 @@ export function Hero() {
 
       {/* Subtle Grid */}
       <div
-        className="absolute inset-0 opacity-[0.03]"
+        className="hero-grid absolute inset-0"
         style={{
           backgroundImage:
             "linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)",
@@ -32,21 +32,21 @@ export function Hero() {
       {/* Content */}
       <div className="relative z-10 mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
         {/* Glass Card */}
-        <div className="mx-auto max-w-3xl rounded-2xl border border-white/10 bg-white/5 px-6 py-16 backdrop-blur-xl sm:px-12 sm:py-20">
+        <div className="hero-card mx-auto max-w-3xl rounded-2xl border border-white/10 bg-white/5 px-6 py-16 backdrop-blur-xl sm:px-12 sm:py-20">
           {/* Accent Line */}
-          <div className="mx-auto mb-8 h-px w-16 bg-accent-red" />
+          <div className="hero-line mx-auto mb-8 h-px w-16 bg-accent-red" />
 
-          <h1 className="animate-fade-in-up font-[family-name:var(--font-black-ops-one)] text-5xl font-normal tracking-tight text-white sm:text-6xl lg:text-7xl">
+          <h1 className="hero-title font-[family-name:var(--font-black-ops-one)] text-5xl font-normal tracking-tight text-white sm:text-6xl lg:text-7xl">
             BK{" "}
             <span className="text-accent-red">CLOTHING</span>
           </h1>
 
-          <p className="animate-fade-in-up animation-delay-100 mt-6 text-sm font-light tracking-[0.25em] uppercase text-white/70 sm:text-base">
+          <p className="hero-subtitle mt-6 text-sm font-light tracking-[0.25em] uppercase text-white/70 sm:text-base">
             Manufacturers &amp; Wholesale Dealers in Men&apos;s Clothing
           </p>
 
           {/* Buttons */}
-          <div className="animate-fade-in-up animation-delay-300 mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <div className="hero-buttons mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button
               asChild
               size="lg"
@@ -70,7 +70,7 @@ export function Hero() {
       </div>
 
       {/* Bottom Gradient */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent" />
+      <div className="hero-bottom-gradient absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent" />
     </section>
   );
 }
