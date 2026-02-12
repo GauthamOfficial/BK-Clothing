@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Instagram, Facebook } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -51,13 +52,17 @@ export function Navbar() {
         {/* Logo */}
         <Link
           href="/"
-          className={cn(
-            "text-xl font-bold tracking-wider transition-colors",
-            textColor
-          )}
+          className="flex-shrink-0"
           aria-label={`${SITE_NAME} - Home`}
         >
-          BK<span className="text-accent-red">.</span>
+          <Image
+            src="/navbar-logo.png"
+            alt={SITE_NAME}
+            width={40}
+            height={40}
+            className="h-10 w-10 object-contain"
+            priority
+          />
         </Link>
 
         {/* Desktop Navigation */}
@@ -126,10 +131,14 @@ export function Navbar() {
               <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
               <div className="flex h-full flex-col">
                 {/* Mobile Logo */}
-                <div className="flex h-16 items-center border-b px-6">
-                  <span className="text-xl font-bold tracking-wider">
-                    BK<span className="text-accent-red">.</span>
-                  </span>
+                <div className="flex h-16 items-center border-b px-4">
+                  <Image
+                    src="/navbar-logo.png"
+                    alt={SITE_NAME}
+                    width={36}
+                    height={36}
+                    className="h-9 w-9 object-contain"
+                  />
                 </div>
 
                 {/* Mobile Links */}

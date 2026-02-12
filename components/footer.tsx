@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Instagram, Facebook, Phone, Mail, MapPin } from "lucide-react";
 import { NAV_LINKS, CONTACT, SOCIAL, SITE_NAME } from "@/lib/constants";
 
@@ -9,8 +10,14 @@ export function Footer() {
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <Link href="/" className="text-2xl font-bold tracking-wider">
-              BK<span className="text-accent-red">.</span>
+            <Link href="/" className="inline-block">
+              <Image
+                src="/footer-logo.png"
+                alt={SITE_NAME}
+                width={60}
+                height={72}
+                className="h-16 w-auto object-contain"
+              />
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-gray-400">
               Premium wholesale clothing manufacturer and distributor. Delivering
