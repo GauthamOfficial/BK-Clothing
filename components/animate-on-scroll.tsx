@@ -18,6 +18,7 @@ interface AnimateOnScrollProps {
   duration?: number;
   className?: string;
   threshold?: number;
+  rootMargin?: string;
 }
 
 export function AnimateOnScroll({
@@ -27,6 +28,7 @@ export function AnimateOnScroll({
   duration = 850,
   className = "",
   threshold = 0.1,
+  rootMargin = "0px 0px -60px 0px",
 }: AnimateOnScrollProps) {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -44,12 +46,12 @@ export function AnimateOnScroll({
           observer.unobserve(el);
         }
       },
-      { threshold, rootMargin: "0px 0px -60px 0px" }
+      { threshold, rootMargin }
     );
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, [delay, threshold]);
+  }, [delay, threshold, rootMargin]);
 
   return (
     <div

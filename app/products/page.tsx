@@ -32,7 +32,7 @@ export default function ProductsPage() {
       {/* Gallery */}
       <section className="bg-white py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <AnimateOnScroll variant="fade-up">
+          <AnimateOnScroll variant="fade-up" threshold={0} rootMargin="0px 0px 200px 0px">
             <Gallery items={items} showFilter={true} />
           </AnimateOnScroll>
         </div>
@@ -41,7 +41,7 @@ export default function ProductsPage() {
       {/* CTA */}
       <section className="bg-gray-50 py-16">
         <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
-          <AnimateOnScroll variant="fade-up">
+          <AnimateOnScroll variant="fade-up" threshold={0} rootMargin="0px 0px 100px 0px">
             <p className="text-gray-600">
               Interested in wholesale pricing?{" "}
               <a
