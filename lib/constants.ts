@@ -26,7 +26,7 @@ export const SOCIAL = {
   facebook: "https://www.facebook.com/share/1DfaYj4ACF/",
   tiktok:
     "https://www.tiktok.com/@bkclothingcompany?_r=1&_t=ZS-93xqfrxiqwr",
-  whatsapp: "https://wa.me/94773767841",
+  whatsapp: "https://wa.me/94764003976",
 } as const;
 
 export const NAV_LINKS = [
