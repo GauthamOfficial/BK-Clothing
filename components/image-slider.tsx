@@ -3,12 +3,14 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 
 const slides = [
-  { src: "/img-1.png", alt: "BK Clothing Collection 1" },
-  { src: "/img-2.png", alt: "BK Clothing Collection 2" },
-  { src: "/img-3.png", alt: "BK Clothing Collection 3" },
-  { src: "/img-4.png", alt: "BK Clothing Collection 4" },
-  { src: "/img-5.png", alt: "BK Clothing Collection 5" },
-  { src: "/img-6.png", alt: "BK Clothing Collection 6" },
+  { src: "/img-1.jpg", alt: "BK Clothing Collection 1" },
+  { src: "/img-2.jpg", alt: "BK Clothing Collection 2" },
+  { src: "/img-3.jpg", alt: "BK Clothing Collection 3" },
+  { src: "/img-4.jpg", alt: "BK Clothing Collection 4" },
+  { src: "/img-5.jpg", alt: "BK Clothing Collection 5" },
+  { src: "/img-6.jpg", alt: "BK Clothing Collection 6" },
+  { src: "/img-7.jpg", alt: "BK Clothing Collection 7" },
+  { src: "/img-8.jpg", alt: "BK Clothing Collection 8" },
 ];
 
 export function ImageSlider() {
