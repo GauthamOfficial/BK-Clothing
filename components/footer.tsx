@@ -125,6 +125,15 @@ export function Footer() {
                 <WhatsApp className="h-4 w-4" />
               </a>
             </div>
+            <div className="mt-4">
+              <Image
+                src="/bk-qr.jpeg"
+                alt="BK Clothing QR Code"
+                width={120}
+                height={120}
+                className="h-24 w-24 object-contain"
+              />
+            </div>
           </div>
         </div>
 
