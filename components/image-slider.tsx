@@ -32,7 +32,7 @@ export function ImageSlider() {
 
   return (
     <div
-      className="relative w-full overflow-hidden"
+      className="relative w-full overflow-hidden leading-[0]"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -42,15 +42,12 @@ export function ImageSlider() {
         style={{ transform: `translateX(-${current * 100}%)` }}
       >
         {slides.map((slide, i) => (
-          <div key={slide.src} className="relative w-full flex-shrink-0">
-            <Image
+          <div key={slide.src} className="relative w-full flex-shrink-0 flex">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
               src={slide.src}
               alt={slide.alt}
-              width={1200}
-              height={675}
-              sizes="(max-width: 1024px) 100vw, 1024px"
               className="block w-full h-auto"
-              priority={i === 0}
               loading={i === 0 ? "eager" : "lazy"}
             />
           </div>

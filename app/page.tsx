@@ -40,7 +40,7 @@ export default function HomePage() {
       {/* Image Slider + Hero */}
       <section className="relative z-[2] pt-16">
         <div className="mx-auto max-w-3xl px-4 pt-4 sm:px-6 sm:pt-6 lg:px-8">
-          <div className="overflow-hidden rounded-xl shadow-lg">
+          <div className="overflow-hidden rounded-xl shadow-lg leading-[0]">
             <ImageSlider />
           </div>
         </div>
