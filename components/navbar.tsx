@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Instagram, Facebook } from "lucide-react";
-import { TikTok } from "@/components/icons";
+import { TikTok, WhatsApp } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -125,6 +125,18 @@ export function Navbar() {
             >
               <TikTok className="h-4 w-4" />
             </a>
+            <a
+              href={SOCIAL.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Chat on WhatsApp"
+              className={cn(
+                "transition-colors hover:text-accent-red",
+                textColor
+              )}
+            >
+              <WhatsApp className="h-4 w-4" />
+            </a>
           </div>
         </div>
 
@@ -207,6 +219,15 @@ export function Navbar() {
                       className="text-gray-600 transition-colors hover:text-accent-red"
                     >
                       <TikTok className="h-5 w-5" />
+                    </a>
+                    <a
+                      href={SOCIAL.whatsapp}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Chat on WhatsApp"
+                      className="text-gray-600 transition-colors hover:text-accent-red"
+                    >
+                      <WhatsApp className="h-5 w-5" />
                     </a>
                   </div>
                 </div>
