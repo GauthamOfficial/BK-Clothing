@@ -9,9 +9,8 @@ export function Hero() {
         {/* Accent Line */}
         <div className="hero-line mx-auto mb-6 h-px w-16 bg-accent-red" />
 
-        <h1 className="hero-title font-[family-name:var(--font-black-ops-one)] text-4xl font-normal tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
-          BK{" "}
-          <span className="text-accent-red">CLOTHING</span>
+        <h1 className="hero-title font-[family-name:var(--font-black-ops-one)] text-4xl font-normal tracking-tight text-accent-red sm:text-5xl lg:text-6xl">
+          BK CLOTHING
         </h1>
 
         <p className="hero-subtitle mt-4 text-xs font-bold tracking-normal uppercase text-gray-500 sm:text-sm">
@@ -23,7 +22,7 @@ export function Hero() {
           <Button
             asChild
             size="lg"
-            className="group bg-accent-red px-8 text-sm font-medium uppercase tracking-wider text-white hover:bg-red-600"
+            className="group bg-black px-8 text-sm font-medium uppercase tracking-wider text-white hover:bg-gray-800"
           >
             <Link href="/products">
               View Products
