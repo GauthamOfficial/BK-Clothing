@@ -5,43 +5,33 @@ import { ArrowRight } from "lucide-react";
 export function Hero() {
   return (
     <section
-      className="relative flex min-h-screen items-center justify-center overflow-hidden bg-black"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden bg-white"
       aria-label="Hero section"
     >
-      {/* Background Pattern */}
+      {/* Soft radial accents */}
       <div className="hero-bg absolute inset-0">
         <div
           className="h-full w-full"
           style={{
             backgroundImage:
-              "radial-gradient(circle at 25% 25%, rgba(255,0,58,0.3) 0%, transparent 50%), radial-gradient(circle at 75% 75%, rgba(255,255,255,0.1) 0%, transparent 50%)",
+              "radial-gradient(ellipse at 20% 50%, rgba(255,0,58,0.04) 0%, transparent 60%), radial-gradient(ellipse at 80% 50%, rgba(0,0,0,0.03) 0%, transparent 60%)",
           }}
         />
       </div>
 
-      {/* Subtle Grid */}
-      <div
-        className="hero-grid absolute inset-0"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)",
-          backgroundSize: "80px 80px",
-        }}
-      />
-
       {/* Content */}
       <div className="relative z-10 mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
-        {/* Glass Card */}
-        <div className="hero-card mx-auto max-w-3xl rounded-2xl border border-white/10 bg-white/5 px-6 py-16 backdrop-blur-xl sm:px-12 sm:py-20">
+        {/* Card */}
+        <div className="hero-card mx-auto max-w-3xl rounded-2xl border border-black/[0.06] bg-white/70 px-6 py-16 shadow-[0_8px_60px_-12px_rgba(0,0,0,0.08)] backdrop-blur-xl sm:px-12 sm:py-20">
           {/* Accent Line */}
           <div className="hero-line mx-auto mb-8 h-px w-16 bg-accent-red" />
 
-          <h1 className="hero-title font-[family-name:var(--font-black-ops-one)] text-5xl font-normal tracking-tight text-white sm:text-6xl lg:text-7xl">
+          <h1 className="hero-title font-[family-name:var(--font-black-ops-one)] text-5xl font-normal tracking-tight text-gray-900 sm:text-6xl lg:text-7xl">
             BK{" "}
             <span className="text-accent-red">CLOTHING</span>
           </h1>
 
-          <p className="hero-subtitle mt-6 text-sm font-light tracking-[0.25em] uppercase text-white/70 sm:text-base">
+          <p className="hero-subtitle mt-6 text-sm font-light tracking-[0.25em] uppercase text-gray-500 sm:text-base">
             Manufacturers &amp; Wholesale Dealers in Men&apos;s Clothing
           </p>
 
@@ -61,7 +51,7 @@ export function Hero() {
               asChild
               variant="outline"
               size="lg"
-              className="border-white/30 bg-transparent px-8 text-sm font-medium uppercase tracking-wider text-white hover:bg-white/10 hover:text-white"
+              className="border-gray-900 bg-transparent px-8 text-sm font-medium uppercase tracking-wider text-gray-900 hover:bg-gray-900 hover:text-white"
             >
               <Link href="/contact">Contact Us</Link>
             </Button>
@@ -69,8 +59,8 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Bottom Gradient */}
-      <div className="hero-bottom-gradient absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent" />
+      {/* Bottom edge — subtle separator */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-black/10 to-transparent" />
     </section>
   );
 }

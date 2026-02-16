@@ -92,6 +92,27 @@
   }
 }
 
+/* ── Global fabric texture ── */
+#fabric-texture {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23c4b5a3' stroke-width='0.6'%3E%3Cpath d='M40 4L76 40L40 76L4 40Z' opacity='0.3'/%3E%3Cpath d='M40 14L66 40L40 66L14 40Z' opacity='0.18'/%3E%3Cpath d='M40 24L56 40L40 56L24 40Z' opacity='0.12'/%3E%3Ccircle cx='40' cy='40' r='4' opacity='0.1'/%3E%3Cpath d='M40 0L40 4M40 76L40 80M0 40L4 40M76 40L80 40' opacity='0.15'/%3E%3Cpath d='M0 0L4 4M76 76L80 80M80 0L76 4M0 80L4 76' opacity='0.1'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 80px 80px;
+}
+
+/* Lift content above texture, hide texture behind dark sections */
+section > div {
+  position: relative;
+  z-index: 2;
+}
+section.bg-black,
+footer {
+  position: relative;
+  z-index: 2;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
@@ -232,20 +253,11 @@ html {
 @keyframes hero-bg-in {
   0% {
     opacity: 0;
-    transform: scale3d(1.08, 1.08, 1);
+    transform: scale3d(1.05, 1.05, 1);
   }
   100% {
-    opacity: 0.1;
+    opacity: 1;
     transform: scale3d(1, 1, 1);
-  }
-}
-
-@keyframes hero-grid-in {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 0.03;
   }
 }
 
@@ -327,11 +339,6 @@ html {
   backface-visibility: hidden;
 }
 
-.hero-grid {
-  opacity: 0;
-  animation: hero-grid-in 2.5s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
-}
-
 .hero-card {
   opacity: 0;
   animation: hero-card-in 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
@@ -376,7 +383,6 @@ html {
   .animate-fade-in,
   .animate-page-header,
   .hero-bg,
-  .hero-grid,
   .hero-card,
   .hero-line,
   .hero-title,
@@ -388,11 +394,5 @@ html {
     animation: none !important;
     transition: none !important;
     filter: none !important;
-  }
-  .hero-bg {
-    opacity: 0.1 !important;
-  }
-  .hero-grid {
-    opacity: 0.03 !important;
   }
 }

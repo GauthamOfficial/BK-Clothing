@@ -31,11 +31,11 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navBg = scrolled || !isHome
+  const navBg = scrolled
     ? "bg-white/80 backdrop-blur-xl border-b border-black/5 shadow-sm"
     : "bg-transparent";
 
-  const textColor = scrolled || !isHome ? "text-black" : "text-white";
+  const textColor = "text-black";
 
   return (
     <header

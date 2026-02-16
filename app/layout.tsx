@@ -103,6 +103,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${playfair.variable} ${blackOpsOne.variable} font-sans antialiased`}
       >
+        <div id="fabric-texture" aria-hidden="true" />
         <Navbar />
         <main className="min-h-screen">{children}</main>
         <Footer />
