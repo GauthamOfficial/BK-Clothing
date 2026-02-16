@@ -39,7 +39,7 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="animate-page-header mx-auto max-w-3xl text-center">
             <div className="mb-6 mx-auto h-px w-16 bg-accent-red" />
-            <h1 className="font-[family-name:var(--font-playfair)] text-4xl font-bold tracking-tight text-white sm:text-5xl">
+            <h1 className="font-[family-name:var(--font-poppins)] text-4xl font-bold tracking-tight text-white sm:text-5xl">
               About Us
             </h1>
             <p className="mt-4 text-lg text-white/60">
@@ -54,7 +54,7 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl">
             <AnimateOnScroll variant="fade-up">
-              <h2 className="font-[family-name:var(--font-playfair)] text-3xl font-bold tracking-tight text-gray-900">
+              <h2 className="font-[family-name:var(--font-poppins)] text-3xl font-bold tracking-tight text-gray-900">
                 Our Story
               </h2>
             </AnimateOnScroll>
@@ -101,11 +101,52 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Values */}
+      {/* Vision & Mission */}
       <section className="bg-gray-50 py-20 sm:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-8 md:grid-cols-2">
+            {/* Vision */}
+            <AnimateOnScroll variant="fade-up">
+              <div className="rounded-lg border bg-white p-8 shadow-sm">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="h-1 w-12 bg-accent-red" />
+                  <h2 className="font-[family-name:var(--font-poppins)] text-2xl font-bold text-gray-900">
+                    Vision
+                  </h2>
+                </div>
+                <p className="text-gray-600 leading-relaxed">
+                  To set a new benchmark in Sri Lanka's wholesale clothing industry
+                  by delivering globally inspired quality with locally trusted
+                  service.
+                </p>
+              </div>
+            </AnimateOnScroll>
+
+            {/* Mission */}
+            <AnimateOnScroll variant="fade-up" delay={100}>
+              <div className="rounded-lg border bg-white p-8 shadow-sm">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="h-1 w-12 bg-accent-red" />
+                  <h2 className="font-[family-name:var(--font-poppins)] text-2xl font-bold text-gray-900">
+                    Mission
+                  </h2>
+                </div>
+                <p className="text-gray-600 leading-relaxed">
+                  To set a new benchmark in Sri Lanka's wholesale clothing industry
+                  by delivering globally inspired quality with locally trusted
+                  service.
+                </p>
+              </div>
+            </AnimateOnScroll>
+          </div>
+        </div>
+      </section>
+
+      {/* Values */}
+      <section className="bg-white py-20 sm:py-28">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <AnimateOnScroll variant="fade-up" className="mb-14 text-center">
-            <h2 className="font-[family-name:var(--font-playfair)] text-3xl font-bold tracking-tight text-gray-900">
+            <h2 className="font-[family-name:var(--font-poppins)] text-3xl font-bold tracking-tight text-gray-900">
               What Sets Us Apart
             </h2>
           </AnimateOnScroll>
@@ -136,7 +177,7 @@ export default function AboutPage() {
       <section className="bg-black py-20">
         <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
           <AnimateOnScroll variant="fade-up">
-            <h2 className="font-[family-name:var(--font-playfair)] text-3xl font-bold text-white sm:text-4xl">
+            <h2 className="font-[family-name:var(--font-poppins)] text-3xl font-bold text-white sm:text-4xl">
               Partner With Us
             </h2>
           </AnimateOnScroll>

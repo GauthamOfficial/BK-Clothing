@@ -18,7 +18,7 @@ export default function ContactPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="animate-page-header mx-auto max-w-3xl text-center">
             <div className="mb-6 mx-auto h-px w-16 bg-accent-red" />
-            <h1 className="font-[family-name:var(--font-playfair)] text-4xl font-bold tracking-tight text-white sm:text-5xl">
+            <h1 className="font-[family-name:var(--font-poppins)] text-4xl font-bold tracking-tight text-white sm:text-5xl">
               Contact Us
             </h1>
             <p className="mt-4 text-lg text-white/60">

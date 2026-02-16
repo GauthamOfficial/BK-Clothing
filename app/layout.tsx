@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display, Black_Ops_One } from "next/font/google";
+import { Poppins, Black_Ops_One } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
@@ -11,15 +11,10 @@ import {
   SOCIAL,
 } from "@/lib/constants";
 
-const inter = Inter({
-  variable: "--font-geist-sans",
+const poppins = Poppins({
+  variable: "--font-poppins",
   subsets: ["latin"],
-  display: "swap",
-});
-
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
-  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
   display: "swap",
 });
 
@@ -101,7 +96,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} ${playfair.variable} ${blackOpsOne.variable} font-sans antialiased`}
+        className={`${poppins.variable} ${blackOpsOne.variable} font-sans antialiased`}
       >
         <div id="fabric-texture" aria-hidden="true" />
         <Navbar />

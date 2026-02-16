@@ -55,7 +55,7 @@ export default function HomePage() {
               <div className="mb-6 h-px w-16 mx-auto bg-accent-red" />
             </AnimateOnScroll>
             <AnimateOnScroll variant="fade-up" delay={100}>
-              <h2 className="font-[family-name:var(--font-playfair)] text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              <h2 className="font-[family-name:var(--font-poppins)] text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                 Manufacturers &amp; Wholesale Dealers in Men&apos;s Clothing
               </h2>
             </AnimateOnScroll>
@@ -87,7 +87,7 @@ export default function HomePage() {
       <section className="bg-gray-50 py-20 sm:py-28" aria-label="Product categories">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <AnimateOnScroll variant="fade-up" className="mb-14 text-center">
-            <h2 className="font-[family-name:var(--font-playfair)] text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            <h2 className="font-[family-name:var(--font-poppins)] text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
               Our Categories
             </h2>
             <p className="mt-4 text-gray-600">
@@ -135,7 +135,7 @@ export default function HomePage() {
         <section className="bg-white py-20 sm:py-28" aria-label="Latest products">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <AnimateOnScroll variant="fade-up" className="mb-14 text-center">
-              <h2 className="font-[family-name:var(--font-playfair)] text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              <h2 className="font-[family-name:var(--font-poppins)] text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                 Our Products
               </h2>
               <p className="mt-4 text-gray-600">
@@ -191,7 +191,7 @@ export default function HomePage() {
       <section className="bg-gray-50 py-20 overflow-hidden" aria-label="Social media">
         <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
           <AnimateOnScroll variant="fade-up">
-            <h2 className="font-[family-name:var(--font-playfair)] text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            <h2 className="font-[family-name:var(--font-poppins)] text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
               Connect With Us
             </h2>
             <p className="mt-4 text-gray-600">
