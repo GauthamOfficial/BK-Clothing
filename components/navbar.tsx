@@ -71,6 +71,46 @@ export function Navbar() {
           />
         </Link>
 
+        {/* Mobile Social Icons — between logo and hamburger */}
+        <div className="flex items-center gap-3 md:hidden">
+          <a
+            href={SOCIAL.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Follow us on Instagram"
+            className={cn("transition-colors hover:text-accent-red", textColor)}
+          >
+            <Instagram className="h-4 w-4" />
+          </a>
+          <a
+            href={SOCIAL.facebook}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Follow us on Facebook"
+            className={cn("transition-colors hover:text-accent-red", textColor)}
+          >
+            <Facebook className="h-4 w-4" />
+          </a>
+          <a
+            href={SOCIAL.tiktok}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Follow us on TikTok"
+            className={cn("transition-colors hover:text-accent-red", textColor)}
+          >
+            <TikTok className="h-4 w-4" />
+          </a>
+          <a
+            href={SOCIAL.whatsapp}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Chat on WhatsApp"
+            className={cn("transition-colors hover:text-accent-red", textColor)}
+          >
+            <WhatsApp className="h-4 w-4" />
+          </a>
+        </div>
+
         {/* Desktop Navigation */}
         <div className="hidden items-center gap-8 md:flex">
           {NAV_LINKS.map((link) => (
