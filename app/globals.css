@@ -253,6 +253,24 @@ body {
   backface-visibility: hidden;
 }
 
+/* ── Slider entrance animation ── */
+@keyframes slider-in {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0) scale3d(0.98, 0.98, 1);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+  }
+}
+
+.animate-slider-in {
+  opacity: 0;
+  animation: slider-in 1s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+  backface-visibility: hidden;
+}
+
 /* ── Hero entrance animations ── */
 @keyframes hero-bg-in {
   0% {
@@ -386,6 +404,7 @@ body {
   .animate-fade-in-up,
   .animate-fade-in,
   .animate-page-header,
+  .animate-slider-in,
   .hero-bg,
   .hero-card,
   .hero-line,
