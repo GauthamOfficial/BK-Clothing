@@ -87,7 +87,7 @@ export function Footer() {
             <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider">
               Follow Us
             </h3>
-            <div className="flex items-center gap-4">
+            <div className="flex flex-wrap items-center gap-3">
               <a
                 href={SOCIAL.instagram}
                 target="_blank"

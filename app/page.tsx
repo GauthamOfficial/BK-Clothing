@@ -180,7 +180,7 @@ export default function HomePage() {
       )}
 
       {/* Social Section */}
-      <section className="bg-gray-50 py-20" aria-label="Social media">
+      <section className="bg-gray-50 py-20 overflow-hidden" aria-label="Social media">
         <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
           <AnimateOnScroll variant="fade-up">
             <h2 className="font-[family-name:var(--font-playfair)] text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
@@ -190,58 +190,56 @@ export default function HomePage() {
               Follow us on social media for the latest updates
             </p>
           </AnimateOnScroll>
-          <AnimateOnScroll variant="fade-up" delay={200}>
-            <div className="mt-10 flex items-center justify-center gap-6">
-              <a
-                href={SOCIAL.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Follow us on Instagram"
-                className="group flex items-center gap-3 rounded-full border border-gray-200 bg-white px-8 py-4 transition-all hover:border-accent-red hover:shadow-md"
-              >
-                <Instagram className="h-5 w-5 text-gray-600 transition-colors group-hover:text-accent-red" />
-                <span className="text-sm font-medium text-gray-700 group-hover:text-accent-red">
-                  Instagram
-                </span>
-              </a>
-              <a
-                href={SOCIAL.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Follow us on Facebook"
-                className="group flex items-center gap-3 rounded-full border border-gray-200 bg-white px-8 py-4 transition-all hover:border-accent-red hover:shadow-md"
-              >
-                <Facebook className="h-5 w-5 text-gray-600 transition-colors group-hover:text-accent-red" />
-                <span className="text-sm font-medium text-gray-700 group-hover:text-accent-red">
-                  Facebook
-                </span>
-              </a>
-              <a
-                href={SOCIAL.tiktok}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Follow us on TikTok"
-                className="group flex items-center gap-3 rounded-full border border-gray-200 bg-white px-8 py-4 transition-all hover:border-accent-red hover:shadow-md"
-              >
-                <TikTok className="h-5 w-5 text-gray-600 transition-colors group-hover:text-accent-red" />
-                <span className="text-sm font-medium text-gray-700 group-hover:text-accent-red">
-                  TikTok
-                </span>
-              </a>
-              <a
-                href={SOCIAL.whatsapp}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Chat on WhatsApp"
-                className="group flex items-center gap-3 rounded-full border border-gray-200 bg-white px-8 py-4 transition-all hover:border-accent-red hover:shadow-md"
-              >
-                <WhatsApp className="h-5 w-5 text-gray-600 transition-colors group-hover:text-accent-red" />
-                <span className="text-sm font-medium text-gray-700 group-hover:text-accent-red">
-                  WhatsApp
-                </span>
-              </a>
-            </div>
-          </AnimateOnScroll>
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+            <a
+              href={SOCIAL.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Follow us on Instagram"
+              className="group flex items-center gap-2 rounded-full border border-gray-200 bg-white px-5 py-2.5 transition-all hover:border-accent-red hover:shadow-md sm:gap-3 sm:px-8 sm:py-4"
+            >
+              <Instagram className="h-4 w-4 text-gray-600 transition-colors group-hover:text-accent-red sm:h-5 sm:w-5" />
+              <span className="text-xs font-medium text-gray-700 group-hover:text-accent-red sm:text-sm">
+                Instagram
+              </span>
+            </a>
+            <a
+              href={SOCIAL.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Follow us on Facebook"
+              className="group flex items-center gap-2 rounded-full border border-gray-200 bg-white px-5 py-2.5 transition-all hover:border-accent-red hover:shadow-md sm:gap-3 sm:px-8 sm:py-4"
+            >
+              <Facebook className="h-4 w-4 text-gray-600 transition-colors group-hover:text-accent-red sm:h-5 sm:w-5" />
+              <span className="text-xs font-medium text-gray-700 group-hover:text-accent-red sm:text-sm">
+                Facebook
+              </span>
+            </a>
+            <a
+              href={SOCIAL.tiktok}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Follow us on TikTok"
+              className="group flex items-center gap-2 rounded-full border border-gray-200 bg-white px-5 py-2.5 transition-all hover:border-accent-red hover:shadow-md sm:gap-3 sm:px-8 sm:py-4"
+            >
+              <TikTok className="h-4 w-4 text-gray-600 transition-colors group-hover:text-accent-red sm:h-5 sm:w-5" />
+              <span className="text-xs font-medium text-gray-700 group-hover:text-accent-red sm:text-sm">
+                TikTok
+              </span>
+            </a>
+            <a
+              href={SOCIAL.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Chat on WhatsApp"
+              className="group flex items-center gap-2 rounded-full border border-gray-200 bg-white px-5 py-2.5 transition-all hover:border-accent-red hover:shadow-md sm:gap-3 sm:px-8 sm:py-4"
+            >
+              <WhatsApp className="h-4 w-4 text-gray-600 transition-colors group-hover:text-accent-red sm:h-5 sm:w-5" />
+              <span className="text-xs font-medium text-gray-700 group-hover:text-accent-red sm:text-sm">
+                WhatsApp
+              </span>
+            </a>
+          </div>
         </div>
       </section>
     </>
