@@ -35,7 +35,7 @@ export function Navbar() {
     ? "bg-white/80 backdrop-blur-xl border-b border-black/5 shadow-sm"
     : "bg-transparent";
 
-  const textColor = "text-black";
+  const textColor = scrolled || isHome ? "text-black" : "text-white";
 
   return (
     <header
@@ -87,7 +87,7 @@ export function Navbar() {
           ))}
 
           {/* Social Icons */}
-          <div className="flex items-center gap-3 border-l border-current/20 pl-6">
+          <div className={cn("flex items-center gap-3 border-l pl-6", scrolled || isHome ? "border-black/20" : "border-white/30")}>
             <a
               href={SOCIAL.instagram}
               target="_blank"
