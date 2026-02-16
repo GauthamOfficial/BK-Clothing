@@ -31,7 +31,7 @@ export function Hero() {
             <span className="text-accent-red">CLOTHING</span>
           </h1>
 
-          <p className="hero-subtitle mt-6 text-sm font-bold tracking-normal text-gray-500 sm:text-base">
+          <p className="hero-subtitle mt-6 text-sm font-bold tracking-normal uppercase text-gray-500 sm:text-base">
             Manufacturers &amp; Wholesale Dealers In Men&apos;s Clothing
           </p>
 

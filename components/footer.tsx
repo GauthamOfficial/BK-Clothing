@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Instagram, Facebook, Phone, Mail, MapPin } from "lucide-react";
+import { TikTok } from "@/components/icons";
 import { NAV_LINKS, CONTACT, SOCIAL, SITE_NAME } from "@/lib/constants";
 
 export function Footer() {
@@ -104,6 +105,15 @@ export function Footer() {
                 className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-700 text-gray-400 transition-all hover:border-accent-red hover:text-accent-red"
               >
                 <Facebook className="h-4 w-4" />
+              </a>
+              <a
+                href={SOCIAL.tiktok}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow us on TikTok"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-700 text-gray-400 transition-all hover:border-accent-red hover:text-accent-red"
+              >
+                <TikTok className="h-4 w-4" />
               </a>
             </div>
           </div>

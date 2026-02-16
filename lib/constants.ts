@@ -24,6 +24,8 @@ export const SOCIAL = {
   instagram:
     "https://www.instagram.com/bkclothingcompany?igsh=M2ozMHh0andkcmln",
   facebook: "https://www.facebook.com/share/1DfaYj4ACF/",
+  tiktok:
+    "https://www.tiktok.com/@bkclothingcompany?_r=1&_t=ZS-93xqfrxiqwr",
 } as const;
 
 export const NAV_LINKS = [

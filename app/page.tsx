@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Instagram, Facebook } from "lucide-react";
+import { TikTok } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Hero } from "@/components/hero";
@@ -213,6 +214,18 @@ export default function HomePage() {
                 <Facebook className="h-5 w-5 text-gray-600 transition-colors group-hover:text-accent-red" />
                 <span className="text-sm font-medium text-gray-700 group-hover:text-accent-red">
                   Facebook
+                </span>
+              </a>
+              <a
+                href={SOCIAL.tiktok}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow us on TikTok"
+                className="group flex items-center gap-3 rounded-full border border-gray-200 bg-white px-8 py-4 transition-all hover:border-accent-red hover:shadow-md"
+              >
+                <TikTok className="h-5 w-5 text-gray-600 transition-colors group-hover:text-accent-red" />
+                <span className="text-sm font-medium text-gray-700 group-hover:text-accent-red">
+                  TikTok
                 </span>
               </a>
             </div>
