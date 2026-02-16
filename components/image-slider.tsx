@@ -42,7 +42,7 @@ export function ImageSlider() {
   // Auto-advance
   useEffect(() => {
     if (isHovered) return;
-    const timer = setInterval(next, 4500);
+    const timer = setInterval(next, 2500);
     return () => clearInterval(timer);
   }, [next, isHovered]);
 
