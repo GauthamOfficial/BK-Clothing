@@ -5,7 +5,7 @@ import { ArrowRight } from "lucide-react";
 export function Hero() {
   return (
     <div className="mx-auto max-w-3xl px-4 pb-6 pt-4 sm:px-6 sm:pb-10 sm:pt-6 lg:px-8">
-      <div className="hero-card rounded-2xl border border-black/[0.08] bg-white px-6 py-10 text-center shadow-[0_4px_24px_-4px_rgba(0,0,0,0.08),0_16px_64px_-16px_rgba(0,0,0,0.1)] sm:px-12 sm:py-14">
+      <div className="hero-card rounded-2xl bg-white px-6 py-10 text-center shadow-[0_6px_30px_-4px_rgba(0,0,0,0.2),0_20px_70px_-12px_rgba(0,0,0,0.25)] sm:px-12 sm:py-14">
         {/* Accent Line */}
         <div className="hero-line mx-auto mb-6 h-px w-16 bg-accent-red" />
 
