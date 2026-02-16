@@ -22,7 +22,7 @@ export function Hero() {
       {/* Content */}
       <div className="relative z-10 mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
         {/* Card */}
-        <div className="hero-card mx-auto max-w-3xl rounded-2xl border border-black/[0.06] bg-white/70 px-6 py-16 shadow-[0_8px_60px_-12px_rgba(0,0,0,0.08)] backdrop-blur-xl sm:px-12 sm:py-20">
+        <div className="hero-card mx-auto max-w-3xl rounded-2xl border border-black/[0.08] bg-white px-6 py-16 shadow-[0_4px_24px_-4px_rgba(0,0,0,0.08),0_16px_64px_-16px_rgba(0,0,0,0.1)] sm:px-12 sm:py-20">
           {/* Accent Line */}
           <div className="hero-line mx-auto mb-8 h-px w-16 bg-accent-red" />
 
