@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import path from "path";
 
 export async function POST(request: Request) {
   try {
@@ -32,14 +33,26 @@ export async function POST(request: Request) {
         },
       });
 
+      const logoPath = path.join(process.cwd(), "public", "navbar-logo.png");
+
       await transporter.sendMail({
         from: `"BK Clothing Website" <${gmailUser}>`,
         to: toEmail,
         replyTo: email,
         subject: `New Contact Form: ${name}`,
+        attachments: [
+          {
+            filename: "navbar-logo.png",
+            path: logoPath,
+            cid: "bklogo",
+          },
+        ],
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-            <h2 style="color: #000; border-bottom: 2px solid #ff003a; padding-bottom: 10px;">
+            <div style="text-align: center; padding: 20px 0; background-color: #000; border-radius: 8px 8px 0 0;">
+              <img src="cid:bklogo" alt="BK Clothing" style="height: 80px; width: auto;" />
+            </div>
+            <h2 style="color: #000; border-bottom: 2px solid #ff003a; padding-bottom: 10px; margin-top: 20px;">
               New Contact Form Submission
             </h2>
             <table style="width: 100%; border-collapse: collapse;">
