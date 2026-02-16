@@ -5,6 +5,7 @@ import { TikTok, WhatsApp } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Hero } from "@/components/hero";
+import { ImageSlider } from "@/components/image-slider";
 import { getGalleryItems } from "@/lib/gallery";
 import { SOCIAL } from "@/lib/constants";
 import { AnimateOnScroll, StaggerChildren } from "@/components/animate-on-scroll";
@@ -36,8 +37,15 @@ export default function HomePage() {
 
   return (
     <>
-      {/* Hero Section */}
-      <Hero />
+      {/* Image Slider + Hero */}
+      <section className="relative z-[2] pt-16">
+        <div className="mx-auto max-w-3xl px-4 pt-4 sm:px-6 sm:pt-6 lg:px-8">
+          <div className="overflow-hidden rounded-xl shadow-lg">
+            <ImageSlider />
+          </div>
+        </div>
+        <Hero />
+      </section>
 
       {/* About Preview */}
       <section className="bg-white py-20 sm:py-28">
