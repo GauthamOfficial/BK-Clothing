@@ -37,7 +37,7 @@ export function saveGalleryItems(items: GalleryItem[]): void {
 }
 
 /**
- * Add a new item to the gallery
+ * Add a new item to the gallery (at the top)
  */
 export function addGalleryItem(
   item: Omit<GalleryItem, "id">
@@ -47,7 +47,7 @@ export function addGalleryItem(
     ...item,
     id: Date.now().toString(),
   };
-  items.push(newItem);
+  items.unshift(newItem); // Add at the beginning instead of end
   saveGalleryItems(items);
   return newItem;
 }
@@ -61,6 +61,30 @@ export function deleteGalleryItem(id: string): boolean {
   if (filtered.length === items.length) return false;
   saveGalleryItems(filtered);
   return true;
+}
+
+/**
+ * Update an existing gallery item by ID
+ */
+export function updateGalleryItem(
+  id: string,
+  updates: Partial<Pick<GalleryItem, "title" | "category">>
+): GalleryItem | null {
+  const items = getGalleryItems();
+  const index = items.findIndex((item) => item.id === id);
+  
+  if (index === -1) {
+    return null;
+  }
+  
+  // Update the item
+  items[index] = {
+    ...items[index],
+    ...updates,
+  };
+  
+  saveGalleryItems(items);
+  return items[index];
 }
 
 /**

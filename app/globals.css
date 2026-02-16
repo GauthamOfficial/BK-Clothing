@@ -397,6 +397,15 @@ body {
   animation: hero-gradient-in 1.5s cubic-bezier(0.22, 1, 0.36, 1) 0.8s forwards;
 }
 
+/* Drag and drop styles */
+[draggable="true"] {
+  cursor: grab;
+}
+
+[draggable="true"]:active {
+  cursor: grabbing;
+}
+
 /* Reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
   .aos-init,

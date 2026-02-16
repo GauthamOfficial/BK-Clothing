@@ -23,8 +23,10 @@ import {
   Loader2,
   LogOut,
   ImageIcon,
-  ChevronUp,
-  ChevronDown,
+  GripVertical,
+  Edit2,
+  Check,
+  X,
 } from "lucide-react";
 import type { GalleryItem } from "@/lib/gallery";
 
@@ -47,6 +49,12 @@ export function AdminForm() {
   const [loading, setLoading] = useState(false);
   const [loginError, setLoginError] = useState("");
   const [category, setCategory] = useState<string>("formal");
+  const [draggedId, setDraggedId] = useState<string | null>(null);
+  const [dragOverId, setDragOverId] = useState<string | null>(null);
+  const [editingId, setEditingId] = useState<string | null>(null);
+  const [editTitle, setEditTitle] = useState("");
+  const [editCategory, setEditCategory] = useState<string>("formal");
+  const [updating, setUpdating] = useState(false);
 
   const loginForm = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
@@ -139,22 +147,63 @@ export function AdminForm() {
     }
   };
 
-  const handleReorder = async (id: string, direction: "up" | "down") => {
-    const currentIndex = items.findIndex((item) => item.id === id);
-    if (currentIndex === -1) return;
+  const handleDragStart = (e: React.DragEvent, id: string) => {
+    setDraggedId(id);
+    e.dataTransfer.effectAllowed = "move";
+    e.dataTransfer.setData("text/html", id);
+    // Add a slight delay to allow drag image to be set
+    setTimeout(() => {
+      if (e.target instanceof HTMLElement) {
+        e.target.style.opacity = "0.5";
+      }
+    }, 0);
+  };
 
-    const newIndex = direction === "up" ? currentIndex - 1 : currentIndex + 1;
-    if (newIndex < 0 || newIndex >= items.length) return;
+  const handleDragEnd = (e: React.DragEvent) => {
+    if (e.target instanceof HTMLElement) {
+      e.target.style.opacity = "1";
+    }
+    setDraggedId(null);
+    setDragOverId(null);
+  };
 
-    // Create new array with swapped items
+  const handleDragOver = (e: React.DragEvent, id: string) => {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = "move";
+    if (draggedId && draggedId !== id) {
+      setDragOverId(id);
+    }
+  };
+
+  const handleDragLeave = () => {
+    setDragOverId(null);
+  };
+
+  const handleDrop = async (e: React.DragEvent, dropId: string) => {
+    e.preventDefault();
+    setDragOverId(null);
+
+    if (!draggedId || draggedId === dropId) {
+      setDraggedId(null);
+      return;
+    }
+
+    const draggedIndex = items.findIndex((item) => item.id === draggedId);
+    const dropIndex = items.findIndex((item) => item.id === dropId);
+
+    if (draggedIndex === -1 || dropIndex === -1) {
+      setDraggedId(null);
+      return;
+    }
+
+    // Create new array with reordered items
     const newItems = [...items];
-    [newItems[currentIndex], newItems[newIndex]] = [
-      newItems[newIndex],
-      newItems[currentIndex],
-    ];
+    const [draggedItem] = newItems.splice(draggedIndex, 1);
+    newItems.splice(dropIndex, 0, draggedItem);
 
     // Update local state immediately for better UX
     setItems(newItems);
+    setDraggedId(null);
 
     // Send reorder request to server
     try {
@@ -175,6 +224,45 @@ export function AdminForm() {
     } catch {
       // Revert on error
       await fetchItems();
+    }
+  };
+
+  const handleEdit = (item: GalleryItem) => {
+    setEditingId(item.id);
+    setEditTitle(item.title || "");
+    setEditCategory(item.category);
+  };
+
+  const handleCancelEdit = () => {
+    setEditingId(null);
+    setEditTitle("");
+    setEditCategory("formal");
+  };
+
+  const handleSaveEdit = async (id: string) => {
+    setUpdating(true);
+    try {
+      const res = await fetch("/api/admin/gallery", {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          "x-admin-password": password,
+        },
+        body: JSON.stringify({
+          id,
+          title: editTitle.trim() || undefined,
+          category: editCategory,
+        }),
+      });
+
+      if (res.ok) {
+        await fetchItems();
+        handleCancelEdit();
+      }
+    } catch {
+      // Handle error
+    } finally {
+      setUpdating(false);
     }
   };
 
@@ -307,68 +395,161 @@ export function AdminForm() {
             <p className="text-sm text-gray-500">No gallery items yet</p>
           </div>
         ) : (
-          <div className="space-y-3">
-            {items.map((item, index) => (
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {items.map((item) => (
               <div
                 key={item.id}
-                className="group flex items-center gap-4 overflow-hidden rounded-lg border bg-white p-3 shadow-sm transition-shadow hover:shadow-md"
+                draggable={editingId !== item.id}
+                onDragStart={(e) => editingId !== item.id && handleDragStart(e, item.id)}
+                onDragEnd={handleDragEnd}
+                onDragOver={(e) => editingId !== item.id && handleDragOver(e, item.id)}
+                onDragLeave={handleDragLeave}
+                onDrop={(e) => editingId !== item.id && handleDrop(e, item.id)}
+                className={`group relative overflow-hidden rounded-lg border bg-white shadow-sm transition-all ${
+                  editingId === item.id
+                    ? "border-accent-red border-2"
+                    : draggedId === item.id
+                    ? "opacity-50 cursor-grabbing"
+                    : dragOverId === item.id
+                    ? "border-accent-red border-2 scale-105 shadow-lg"
+                    : "hover:shadow-md cursor-grab"
+                }`}
               >
-                {/* Reorder Controls */}
-                <div className="flex flex-col gap-1">
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={() => handleReorder(item.id, "up")}
-                    disabled={index === 0}
-                    className="h-7 w-7 text-gray-400 hover:text-gray-600 disabled:opacity-30 disabled:cursor-not-allowed"
-                    aria-label={`Move ${item.title || item.category} up`}
-                  >
-                    <ChevronUp className="h-4 w-4" />
-                  </Button>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={() => handleReorder(item.id, "down")}
-                    disabled={index === items.length - 1}
-                    className="h-7 w-7 text-gray-400 hover:text-gray-600 disabled:opacity-30 disabled:cursor-not-allowed"
-                    aria-label={`Move ${item.title || item.category} down`}
-                  >
-                    <ChevronDown className="h-4 w-4" />
-                  </Button>
-                </div>
+                {editingId === item.id ? (
+                  /* Edit Mode */
+                  <div className="p-4 space-y-4">
+                    {/* Image Preview */}
+                    <div className="relative aspect-[4/5] bg-gray-100 rounded overflow-hidden">
+                      <Image
+                        src={item.imageUrl}
+                        alt={item.title || item.category}
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="object-cover"
+                        unoptimized
+                      />
+                    </div>
 
-                {/* Image */}
-                <div className="relative h-20 w-20 flex-shrink-0 overflow-hidden rounded bg-gray-100">
-                  <Image
-                    src={item.imageUrl}
-                    alt={item.title || item.category}
-                    fill
-                    sizes="80px"
-                    className="object-cover"
-                    unoptimized
-                  />
-                </div>
+                    {/* Edit Form */}
+                    <div className="space-y-3">
+                      <div className="space-y-2">
+                        <Label htmlFor={`edit-title-${item.id}`} className="text-xs">
+                          Product Name
+                        </Label>
+                        <Input
+                          id={`edit-title-${item.id}`}
+                          value={editTitle}
+                          onChange={(e) => setEditTitle(e.target.value)}
+                          placeholder="Product name (optional)"
+                          className="text-sm"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor={`edit-category-${item.id}`} className="text-xs">
+                          Category
+                        </Label>
+                        <Select value={editCategory} onValueChange={setEditCategory}>
+                          <SelectTrigger className="w-full text-sm">
+                            <SelectValue />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="formal">Formal</SelectItem>
+                            <SelectItem value="casual">Casual</SelectItem>
+                            <SelectItem value="inners">Inners</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                      <div className="flex gap-2 pt-2">
+                        <Button
+                          size="sm"
+                          onClick={() => handleSaveEdit(item.id)}
+                          disabled={updating}
+                          className="flex-1 bg-accent-red text-white hover:bg-red-600"
+                        >
+                          {updating ? (
+                            <Loader2 className="h-3 w-3 animate-spin" />
+                          ) : (
+                            <Check className="h-3 w-3" />
+                          )}
+                          <span className="ml-1 text-xs">Save</span>
+                        </Button>
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          onClick={handleCancelEdit}
+                          disabled={updating}
+                          className="flex-1"
+                        >
+                          <X className="h-3 w-3" />
+                          <span className="ml-1 text-xs">Cancel</span>
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  /* Display Mode */
+                  <>
+                    {/* Drag Handle */}
+                    <div className="absolute left-2 top-2 z-10 flex h-8 w-8 items-center justify-center rounded bg-black/50 opacity-0 transition-opacity group-hover:opacity-100">
+                      <GripVertical className="h-4 w-4 text-white" />
+                    </div>
 
-                {/* Info */}
-                <div className="flex-1 min-w-0">
-                  {item.title && (
-                    <p className="text-sm font-medium truncate">{item.title}</p>
-                  )}
-                  <Badge variant="secondary" className="mt-1 text-xs uppercase">
-                    {item.category}
-                  </Badge>
-                </div>
+                    {/* Image */}
+                    <div className="relative aspect-[4/5] bg-gray-100">
+                      <Image
+                        src={item.imageUrl}
+                        alt={item.title || item.category}
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="object-cover"
+                        unoptimized
+                      />
+                    </div>
 
-                {/* Delete Button */}
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  onClick={() => handleDelete(item.id)}
-                  className="flex-shrink-0 text-gray-400 hover:text-red-500"
-                  aria-label={`Delete ${item.title || item.category} image`}
-                >
-                  <Trash2 className="h-4 w-4" />
-                </Button>
+                    {/* Info Overlay */}
+                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4 pt-8">
+                      {item.title && (
+                        <p className="text-sm font-medium text-white line-clamp-1">
+                          {item.title}
+                        </p>
+                      )}
+                      <Badge
+                        variant="secondary"
+                        className="mt-1.5 text-xs uppercase bg-white/20 text-white border-white/30"
+                      >
+                        {item.category}
+                      </Badge>
+                    </div>
+
+                    {/* Action Buttons */}
+                    <div className="absolute right-2 top-2 z-10 flex gap-1 opacity-0 transition-opacity group-hover:opacity-100">
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleEdit(item);
+                        }}
+                        className="h-8 w-8 bg-black/50 text-white hover:bg-blue-600 hover:text-white"
+                        aria-label={`Edit ${item.title || item.category}`}
+                      >
+                        <Edit2 className="h-4 w-4" />
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleDelete(item.id);
+                        }}
+                        className="h-8 w-8 bg-black/50 text-white hover:bg-red-600 hover:text-white"
+                        aria-label={`Delete ${item.title || item.category} image`}
+                      >
+                        <Trash2 className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </>
+                )}
               </div>
             ))}
           </div>

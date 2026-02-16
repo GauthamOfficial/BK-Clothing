@@ -3,6 +3,7 @@ import {
   getGalleryItems,
   addGalleryItem,
   deleteGalleryItem,
+  updateGalleryItem,
   reorderGalleryItems,
 } from "@/lib/gallery";
 
@@ -101,6 +102,54 @@ export async function DELETE(request: Request) {
     }
 
     return NextResponse.json({ success: true });
+  } catch {
+    return NextResponse.json(
+      { error: "Internal server error" },
+      { status: 500 }
+    );
+  }
+}
+
+/**
+ * PATCH - Update a gallery item (requires auth)
+ */
+export async function PATCH(request: Request) {
+  if (!isAuthenticated(request)) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  try {
+    const body = await request.json();
+    const { id, title, category } = body;
+
+    if (!id) {
+      return NextResponse.json(
+        { error: "Item ID is required" },
+        { status: 400 }
+      );
+    }
+
+    // Validate category if provided
+    if (category !== undefined) {
+      const validCategories = ["formal", "casual", "inners"];
+      if (!validCategories.includes(category)) {
+        return NextResponse.json(
+          { error: "Category must be formal, casual, or inners" },
+          { status: 400 }
+        );
+      }
+    }
+
+    const updatedItem = updateGalleryItem(id, {
+      title: title !== undefined ? title || undefined : undefined,
+      category: category as "formal" | "casual" | "inners" | undefined,
+    });
+
+    if (!updatedItem) {
+      return NextResponse.json({ error: "Item not found" }, { status: 404 });
+    }
+
+    return NextResponse.json(updatedItem);
   } catch {
     return NextResponse.json(
       { error: "Internal server error" },
