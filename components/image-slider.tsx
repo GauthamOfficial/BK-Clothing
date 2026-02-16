@@ -11,6 +11,7 @@ const slides = [
   { src: "/img-6.jpg", alt: "BK Clothing Collection 6" },
   { src: "/img-7.jpg", alt: "BK Clothing Collection 7" },
   { src: "/img-8.jpg", alt: "BK Clothing Collection 8" },
+  { src: "/img-9.jpg", alt: "BK Clothing Collection 9" },
 ];
 
 export function ImageSlider() {
