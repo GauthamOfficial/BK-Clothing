@@ -23,6 +23,8 @@ import {
   Loader2,
   LogOut,
   ImageIcon,
+  ChevronUp,
+  ChevronDown,
 } from "lucide-react";
 import type { GalleryItem } from "@/lib/gallery";
 
@@ -134,6 +136,45 @@ export function AdminForm() {
       await fetchItems();
     } catch {
       // Handle error
+    }
+  };
+
+  const handleReorder = async (id: string, direction: "up" | "down") => {
+    const currentIndex = items.findIndex((item) => item.id === id);
+    if (currentIndex === -1) return;
+
+    const newIndex = direction === "up" ? currentIndex - 1 : currentIndex + 1;
+    if (newIndex < 0 || newIndex >= items.length) return;
+
+    // Create new array with swapped items
+    const newItems = [...items];
+    [newItems[currentIndex], newItems[newIndex]] = [
+      newItems[newIndex],
+      newItems[currentIndex],
+    ];
+
+    // Update local state immediately for better UX
+    setItems(newItems);
+
+    // Send reorder request to server
+    try {
+      const orderedIds = newItems.map((item) => item.id);
+      const res = await fetch("/api/admin/gallery", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          "x-admin-password": password,
+        },
+        body: JSON.stringify({ orderedIds }),
+      });
+
+      if (!res.ok) {
+        // Revert on error
+        await fetchItems();
+      }
+    } catch {
+      // Revert on error
+      await fetchItems();
     }
   };
 
@@ -266,41 +307,68 @@ export function AdminForm() {
             <p className="text-sm text-gray-500">No gallery items yet</p>
           </div>
         ) : (
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {items.map((item) => (
+          <div className="space-y-3">
+            {items.map((item, index) => (
               <div
                 key={item.id}
-                className="group overflow-hidden rounded-lg border bg-white"
+                className="group flex items-center gap-4 overflow-hidden rounded-lg border bg-white p-3 shadow-sm transition-shadow hover:shadow-md"
               >
-                <div className="relative aspect-[4/3] bg-gray-100">
+                {/* Reorder Controls */}
+                <div className="flex flex-col gap-1">
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={() => handleReorder(item.id, "up")}
+                    disabled={index === 0}
+                    className="h-7 w-7 text-gray-400 hover:text-gray-600 disabled:opacity-30 disabled:cursor-not-allowed"
+                    aria-label={`Move ${item.title || item.category} up`}
+                  >
+                    <ChevronUp className="h-4 w-4" />
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={() => handleReorder(item.id, "down")}
+                    disabled={index === items.length - 1}
+                    className="h-7 w-7 text-gray-400 hover:text-gray-600 disabled:opacity-30 disabled:cursor-not-allowed"
+                    aria-label={`Move ${item.title || item.category} down`}
+                  >
+                    <ChevronDown className="h-4 w-4" />
+                  </Button>
+                </div>
+
+                {/* Image */}
+                <div className="relative h-20 w-20 flex-shrink-0 overflow-hidden rounded bg-gray-100">
                   <Image
                     src={item.imageUrl}
                     alt={item.title || item.category}
                     fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    sizes="80px"
                     className="object-cover"
                     unoptimized
                   />
                 </div>
-                <div className="flex items-center justify-between p-3">
-                  <div>
-                    {item.title && (
-                      <p className="text-sm font-medium">{item.title}</p>
-                    )}
-                    <Badge variant="secondary" className="mt-1 text-xs uppercase">
-                      {item.category}
-                    </Badge>
-                  </div>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={() => handleDelete(item.id)}
-                    className="text-gray-400 hover:text-red-500"
-                    aria-label={`Delete ${item.title || item.category} image`}
-                  >
-                    <Trash2 className="h-4 w-4" />
-                  </Button>
+
+                {/* Info */}
+                <div className="flex-1 min-w-0">
+                  {item.title && (
+                    <p className="text-sm font-medium truncate">{item.title}</p>
+                  )}
+                  <Badge variant="secondary" className="mt-1 text-xs uppercase">
+                    {item.category}
+                  </Badge>
                 </div>
+
+                {/* Delete Button */}
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => handleDelete(item.id)}
+                  className="flex-shrink-0 text-gray-400 hover:text-red-500"
+                  aria-label={`Delete ${item.title || item.category} image`}
+                >
+                  <Trash2 className="h-4 w-4" />
+                </Button>
               </div>
             ))}
           </div>

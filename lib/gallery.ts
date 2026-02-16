@@ -62,3 +62,31 @@ export function deleteGalleryItem(id: string): boolean {
   saveGalleryItems(filtered);
   return true;
 }
+
+/**
+ * Reorder gallery items by providing an array of item IDs in the desired order
+ */
+export function reorderGalleryItems(orderedIds: string[]): boolean {
+  const items = getGalleryItems();
+  
+  // Validate that all IDs exist and match the count
+  if (orderedIds.length !== items.length) {
+    return false;
+  }
+  
+  const existingIds = new Set(items.map((item) => item.id));
+  if (!orderedIds.every((id) => existingIds.has(id))) {
+    return false;
+  }
+  
+  // Create a map for quick lookup
+  const itemMap = new Map(items.map((item) => [item.id, item]));
+  
+  // Reorder items based on the provided order
+  const reorderedItems = orderedIds
+    .map((id) => itemMap.get(id))
+    .filter((item): item is GalleryItem => item !== undefined);
+  
+  saveGalleryItems(reorderedItems);
+  return true;
+}

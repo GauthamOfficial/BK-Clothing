@@ -1,15 +1,15 @@
 [
   {
-    "imageUrl": "https://res.cloudinary.com/dbjjpdfe7/image/upload/v1770904206/SnapInsta.to_601416804_17955536736023518_6021411604545581255_n_erqhze.jpg",
-    "category": "casual",
-    "title": "MEN’S CARGO PANT",
-    "id": "1770904244834"
-  },
-  {
     "imageUrl": "https://res.cloudinary.com/dbjjpdfe7/image/upload/v1770904209/SnapInsta.to_605551228_17956284375023518_9158056350084578491_n_qsai9b.jpg",
     "category": "casual",
     "title": "MEN’S TWO TONE SHIRT S/S",
     "id": "1770904315087"
+  },
+  {
+    "imageUrl": "https://res.cloudinary.com/dbjjpdfe7/image/upload/v1770904206/SnapInsta.to_601416804_17955536736023518_6021411604545581255_n_erqhze.jpg",
+    "category": "casual",
+    "title": "MEN’S CARGO PANT",
+    "id": "1770904244834"
   },
   {
     "imageUrl": "https://res.cloudinary.com/dbjjpdfe7/image/upload/v1770904208/SnapInsta.to_602179169_17955762816023518_7670761295983117637_n_lkogw7.jpg",
@@ -42,6 +42,12 @@
     "id": "1770904683340"
   },
   {
+    "imageUrl": "https://res.cloudinary.com/dbjjpdfe7/image/upload/v1770904973/SnapInsta.to_603053986_17955956130023518_6611572085864647135_n_vxmasd.jpg",
+    "category": "casual",
+    "title": "MEN’S OVERSIZED SPRY PRINT T-SHIRT",
+    "id": "1770905079006"
+  },
+  {
     "imageUrl": "https://res.cloudinary.com/dbjjpdfe7/image/upload/v1770904206/SnapInsta.to_599300893_17955037422023518_8650130383914410940_n_lqmksc.jpg",
     "category": "casual",
     "title": "KID’S QUALITY CARGO PANT",
@@ -64,11 +70,5 @@
     "category": "casual",
     "title": "MEN’S TRENDY PANT BOTTOM",
     "id": "1770905044519"
-  },
-  {
-    "imageUrl": "https://res.cloudinary.com/dbjjpdfe7/image/upload/v1770904973/SnapInsta.to_603053986_17955956130023518_6611572085864647135_n_vxmasd.jpg",
-    "category": "casual",
-    "title": "MEN’S OVERSIZED SPRY PRINT T-SHIRT",
-    "id": "1770905079006"
   }
 ]

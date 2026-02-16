@@ -3,6 +3,7 @@ import {
   getGalleryItems,
   addGalleryItem,
   deleteGalleryItem,
+  reorderGalleryItems,
 } from "@/lib/gallery";
 
 function isAuthenticated(request: Request): boolean {
@@ -100,6 +101,50 @@ export async function DELETE(request: Request) {
     }
 
     return NextResponse.json({ success: true });
+  } catch {
+    return NextResponse.json(
+      { error: "Internal server error" },
+      { status: 500 }
+    );
+  }
+}
+
+/**
+ * PUT - Reorder gallery items (requires auth)
+ */
+export async function PUT(request: Request) {
+  if (!isAuthenticated(request)) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  try {
+    const body = await request.json();
+    const { orderedIds } = body;
+
+    if (!Array.isArray(orderedIds)) {
+      return NextResponse.json(
+        { error: "orderedIds must be an array" },
+        { status: 400 }
+      );
+    }
+
+    if (orderedIds.length === 0) {
+      return NextResponse.json(
+        { error: "orderedIds cannot be empty" },
+        { status: 400 }
+      );
+    }
+
+    const success = reorderGalleryItems(orderedIds);
+    if (!success) {
+      return NextResponse.json(
+        { error: "Invalid order or IDs do not match existing items" },
+        { status: 400 }
+      );
+    }
+
+    const items = getGalleryItems();
+    return NextResponse.json({ success: true, items });
   } catch {
     return NextResponse.json(
       { error: "Internal server error" },
