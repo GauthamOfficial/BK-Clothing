@@ -558,10 +558,7 @@ export function AdminForm() {
 
       {/* Note */}
       <div className="rounded-lg bg-amber-50 p-4 text-sm text-amber-800">
-        <strong>Note:</strong> On Vercel serverless deployment, file writes are
-        ephemeral. For persistent storage in production, consider using Vercel KV,
-        a database, or an external CMS. Changes made here will persist during the
-        current deployment lifecycle.
+        <strong>Production:</strong> Set <code className="rounded bg-amber-100 px-1">REDIS_URL</code> (Redis connection string) or Vercel KV env vars so gallery changes persist.
       </div>
     </div>
   );

@@ -9,8 +9,8 @@ export const metadata: Metadata = {
     "Browse our wholesale clothing collection - formal wear, casual clothing, and innerwear. BK Clothing Company Sri Lanka.",
 };
 
-export default function ProductsPage() {
-  const items = getGalleryItems();
+export default async function ProductsPage() {
+  const items = await getGalleryItems();
 
   return (
     <>

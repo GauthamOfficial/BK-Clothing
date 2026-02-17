@@ -20,7 +20,7 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const items = getGalleryItems();
+  const items = await getGalleryItems();
   return NextResponse.json(items);
 }
 
@@ -62,14 +62,15 @@ export async function POST(request: Request) {
       );
     }
 
-    const newItem = addGalleryItem({
+    const newItem = await addGalleryItem({
       imageUrl,
       category,
       title: title || undefined,
     });
 
     return NextResponse.json(newItem, { status: 201 });
-  } catch {
+  } catch (error) {
+    console.error("[Admin Gallery POST]", error);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }
@@ -96,13 +97,14 @@ export async function DELETE(request: Request) {
       );
     }
 
-    const deleted = deleteGalleryItem(id);
+    const deleted = await deleteGalleryItem(id);
     if (!deleted) {
       return NextResponse.json({ error: "Item not found" }, { status: 404 });
     }
 
     return NextResponse.json({ success: true });
-  } catch {
+  } catch (error) {
+    console.error("[Admin Gallery DELETE]", error);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }
@@ -140,7 +142,7 @@ export async function PATCH(request: Request) {
       }
     }
 
-    const updatedItem = updateGalleryItem(id, {
+    const updatedItem = await updateGalleryItem(id, {
       title: title !== undefined ? title || undefined : undefined,
       category: category as "formal" | "casual" | "inners" | undefined,
     });
@@ -150,7 +152,8 @@ export async function PATCH(request: Request) {
     }
 
     return NextResponse.json(updatedItem);
-  } catch {
+  } catch (error) {
+    console.error("[Admin Gallery PATCH]", error);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }
@@ -184,7 +187,7 @@ export async function PUT(request: Request) {
       );
     }
 
-    const success = reorderGalleryItems(orderedIds);
+    const success = await reorderGalleryItems(orderedIds);
     if (!success) {
       return NextResponse.json(
         { error: "Invalid order or IDs do not match existing items" },
@@ -192,9 +195,10 @@ export async function PUT(request: Request) {
       );
     }
 
-    const items = getGalleryItems();
+    const items = await getGalleryItems();
     return NextResponse.json({ success: true, items });
-  } catch {
+  } catch (error) {
+    console.error("[Admin Gallery PUT]", error);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }

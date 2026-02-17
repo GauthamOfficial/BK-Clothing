@@ -31,8 +31,8 @@ const categories = [
   },
 ];
 
-export default function HomePage() {
-  const galleryItems = getGalleryItems();
+export default async function HomePage() {
+  const galleryItems = await getGalleryItems();
   const latestItems = galleryItems.slice(0, 6);
 
   return (
