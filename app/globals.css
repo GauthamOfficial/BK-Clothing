@@ -335,6 +335,17 @@ body {
   }
 }
 
+@keyframes hero-tagline-in {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 10px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
 @keyframes hero-buttons-in {
   0% {
     opacity: 0;
@@ -386,6 +397,12 @@ body {
   backface-visibility: hidden;
 }
 
+.hero-tagline {
+  opacity: 0;
+  animation: hero-tagline-in 1s cubic-bezier(0.22, 1, 0.36, 1) 1.15s forwards;
+  backface-visibility: hidden;
+}
+
 .hero-buttons {
   opacity: 0;
   animation: hero-buttons-in 1s cubic-bezier(0.22, 1, 0.36, 1) 1.3s forwards;
@@ -419,6 +436,7 @@ body {
   .hero-line,
   .hero-title,
   .hero-subtitle,
+  .hero-tagline,
   .hero-buttons,
   .hero-bottom-gradient {
     opacity: 1 !important;
