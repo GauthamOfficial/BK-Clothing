@@ -10,6 +10,8 @@ import { getGalleryItems } from "@/lib/gallery";
 import { SOCIAL } from "@/lib/constants";
 import { AnimateOnScroll, StaggerChildren } from "@/components/animate-on-scroll";
 
+export const dynamic = "force-dynamic";
+
 const categories = [
   {
     name: "Formal",

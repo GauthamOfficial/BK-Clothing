@@ -3,6 +3,8 @@ import { Gallery } from "@/components/gallery";
 import { getGalleryItems } from "@/lib/gallery";
 import { AnimateOnScroll } from "@/components/animate-on-scroll";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Products",
   description:
