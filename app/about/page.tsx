@@ -115,9 +115,10 @@ export default function AboutPage() {
                   </h2>
                 </div>
                 <p className="text-gray-600 leading-relaxed">
-                  To set a new benchmark in Sri Lanka's wholesale clothing industry
-                  by delivering globally inspired quality with locally trusted
-                  service.
+                  To become Sri Lanka&apos;s most trusted and innovative wholesale
+                  clothing supplier, empowering retailers with high-quality,
+                  affordable, and trend-forward apparel while supporting
+                  sustainable and ethical sourcing practices.
                 </p>
               </div>
             </AnimateOnScroll>
@@ -132,9 +133,10 @@ export default function AboutPage() {
                   </h2>
                 </div>
                 <p className="text-gray-600 leading-relaxed">
-                  To set a new benchmark in Sri Lanka's wholesale clothing industry
-                  by delivering globally inspired quality with locally trusted
-                  service.
+                  Our mission is to empower retailers and resellers by providing
+                  dependable wholesale apparel solutions that combine quality,
+                  value, and trend — while supporting local manufacturing and
+                  sustainable business practices.
                 </p>
               </div>
             </AnimateOnScroll>
