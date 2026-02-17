@@ -9,11 +9,19 @@ export function Hero() {
         {/* Accent Line */}
         <div className="hero-line mx-auto mb-6 h-px w-16 bg-accent-red" />
 
-        <h1 className="hero-title font-[family-name:var(--font-black-ops-one)] text-4xl font-normal tracking-tight text-accent-red sm:text-5xl lg:text-6xl">
+        <h1 className="hero-title font-[family-name:var(--font-black-ops-one)] text-5xl font-normal tracking-tight text-accent-red sm:text-6xl lg:text-7xl">
           BK CLOTHING
         </h1>
 
-        <p className="hero-subtitle mt-4 text-xs font-bold tracking-normal uppercase text-gray-500 sm:text-sm">
+        <p className="hero-subtitle mt-2 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-sm font-bold tracking-normal text-gray-600 sm:text-base">
+          <span>Formal</span>
+          <span className="text-gray-400">|</span>
+          <span>Casual</span>
+          <span className="text-gray-400">|</span>
+          <span>Inners</span>
+        </p>
+
+        <p className="mt-2 text-base font-normal tracking-normal text-gray-500 sm:text-lg">
           Manufacturers &amp; Wholesale Dealers In Men&apos;s Clothing
         </p>
 
