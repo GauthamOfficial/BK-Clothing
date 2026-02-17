@@ -13,7 +13,7 @@ export function Hero() {
           BK CLOTHING
         </h1>
 
-        <p className="hero-subtitle mt-0.5 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-2xl font-bold tracking-normal text-gray-600 sm:text-3xl">
+        <p className="hero-subtitle mt-0.5 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-lg font-bold tracking-normal text-gray-600 sm:gap-x-4 sm:text-3xl">
           <span>Formal</span>
           <span className="text-gray-400">|</span>
           <span>Casual</span>
